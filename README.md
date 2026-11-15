@@ -1,8 +1,8 @@
 'DeForrest' is a project that encompasses numerous other projects. Datumatics is the core module, with many sub-modules attached.
 
--datum      -> "a given existent"
--atic       -> "of the nature of"
--ics        -> "the matter or art of"
+-datum      -> "a given existent"<br>
+-atic       -> "of the nature of"<br>
+-ics        -> "the matter or art of"<br>
 -datumatics -> "the matter of the nature and structure of existents; the representation and compilation of logical actuation of the structured state of existents."
 
 **Datumatics** logical representation of actuation over structured state: existents of structured state.
