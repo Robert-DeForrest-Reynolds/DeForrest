@@ -1,646 +1,554 @@
+<!-- CONVENTIONS
+ - Tab Size: 2
+ - An element with multiple sub-elements must be done in separate newlines for each element, following proper indentation; a chain of 1 to 1 to 1 elements can be collapsed into single lines
+ - Multiline content is indented and gets their own lines
+ - Editor uses Editor Width Line Wrapping (~SoftWrap > ~HardWrap)
+-->
+
 <!DOCTYPE html>
 
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>DeForrest Compendium</title>
-<link rel="stylesheet" href="styles.css">
-
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>DeForrest Compendium</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-<div class="shell">
+
+<div class="shell"> <!-- Shell Begin -->
+
 <div class="tb-stack" id="tb-stack">
-<section aria-label="Search" class="toolbox" id="tb-search">
-<header class="tb-head" title="Drag to move"><span aria-hidden="true" class="tb-grip">⋮⋮</span><span class="tb-title">Search</span>
-<button aria-expanded="true" aria-label="Collapse Search" class="iconbtn" data-act="tb-collapse" type="button">▾</button><button aria-label="Hide Search" class="iconbtn" data-act="tb-hide" type="button">✕</button></header>
-<div class="tb-body">
-<div class="rail-block">
-<div class="searchrow">
-<input aria-label="Search" autocomplete="off" id="q" placeholder="Search…   /" spellcheck="false" type="search"/>
-<button aria-label="Previous match" class="iconbtn" id="prevhit" title="Previous match (Shift+Enter)" type="button">↑</button>
-<button aria-label="Next match" class="iconbtn" id="nexthit" title="Next match (Enter)" type="button">↓</button>
-</div>
-<div aria-live="polite" class="count" id="qcount"></div>
-<div class="opts">
-<label><input checked="" id="opt-hide" type="checkbox"/> Hide sections without matches</label>
-<label><input id="opt-orig" type="checkbox"/> Include original documents</label>
-</div>
-</div>
-<div class="rail-block">
-<span class="rail-label">Show only</span>
-<div class="chips" id="statuschips">
-<button aria-pressed="false" class="chipbtn cod" data-st="cod" type="button">Codified</button>
-<button aria-pressed="false" class="chipbtn his" data-st="his" type="button">Historical</button>
-</div>
-</div>
-</div>
-</section>
-<section aria-label="Library" class="toolbox" id="tb-tools">
-<header class="tb-head" title="Drag to move"><span aria-hidden="true" class="tb-grip">⋮⋮</span><span class="tb-title">Library</span>
-<button aria-expanded="true" aria-label="Collapse Library" class="iconbtn" data-act="tb-collapse" type="button">▾</button><button aria-label="Hide Library" class="iconbtn" data-act="tb-hide" type="button">✕</button></header>
-<div class="tb-body">
-<div class="rail-block">
-<div class="toolrow">
-<button class="btn primary" data-act="add-doc" type="button">Add document</button>
-<button class="btn" data-act="fold-all" type="button">Fold all</button>
-<button class="btn" data-act="unfold-all" type="button">Unfold all</button>
-<button class="btn" data-act="print-open" type="button">Print / PDF</button>
-<button class="btn" data-act="theme" id="themebtn" type="button">Theme: auto</button>
-<button aria-pressed="false" class="btn" data-act="edit-toggle" id="editbtn" type="button">Edit text</button>
-<button aria-label="Keyboard shortcuts" class="btn" data-act="help" type="button">?</button>
-<button class="btn" data-act="tb-reset" title="Put every toolbox back in the docked column" type="button">Reset toolboxes</button>
-</div>
-</div>
-<div class="editpanel" id="editpanel">
-<p id="editstatus">Edit text: choose “Edit section” on any section, change it, then press Done.</p>
-<ul id="editlist"></ul>
-<div class="toolrow">
-<button class="btn primary" data-act="save-version" disabled="" id="savebtn" type="button">Write into page</button>
-<button class="btn" data-act="download-html" type="button">Download page</button>
-<button class="btn" data-act="copy-html" type="button">Copy HTML</button>
-<button class="btn danger" data-act="discard" disabled="" id="discardbtn" type="button">Discard unsaved</button>
-</div>
-</div>
-</div>
-</section>
-<section aria-label="Contents" class="toolbox" id="tb-contents">
-<header class="tb-head" title="Drag to move"><span aria-hidden="true" class="tb-grip">⋮⋮</span><span class="tb-title">Contents</span>
-<button aria-expanded="true" aria-label="Collapse Contents" class="iconbtn" data-act="tb-collapse" type="button">▾</button><button aria-label="Hide Contents" class="iconbtn" data-act="tb-hide" type="button">✕</button></header>
-<div class="tb-body">
-<nav aria-label="Contents" class="toc">
+  <section aria-label="Search" class="toolbox" id="tb-search">
+    <header class="tb-head" title="Drag to move">
+      <span class="tb-title">Search</span>
+      <!-- Collapse Button -->
+      <button aria-expanded="true" aria-label="Collapse Search" class="iconbtn" data-act="tb-collapse" type="button">▾</button>
+      <!-- Close Button -->
+      <button aria-label="Hide Search" class="iconbtn" data-act="tb-hide" type="button">✕</button>
+    </header>
 
-<div class="toc-part"><a class="toc-ptitle" href="#part-ii"><span>Part II</span>Datumatics</a><ol>
-<li class="toc-doc"><a href="#d-datumatics-theory">Datumatics: the theory</a><ol><li class="lvl1"><a href="#datumatics">5. Datumatics: the theory</a></li><li class="lvl2"><a href="#datumatics-definitions">5.1 Definitions, in order of appearance</a></li><li class="lvl2"><a href="#operators">5.2 The five operators</a></li><li class="lvl2"><a href="#glossary">5.3 Glossary</a></li><li class="lvl2"><a href="#statements">5.4 Statements</a></li><li class="lvl2"><a href="#knowledge-primitives">5.5 Knowledge primitives, composites and processes</a></li><li class="lvl2"><a href="#datumatics-qa">5.6 Q&amp;A</a></li><li class="lvl2"><a href="#truth">5.7 Truth, certainty and knowns</a></li><li class="lvl2"><a href="#p2p-model">5.8 Peer-to-peer transfer model</a></li><li class="lvl2"><a href="#formats-to-represent">5.9 Formats to represent with Datumatics</a></li><li class="lvl2"><a href="#datumatics-inspiration">5.10 Inspirations of the methodology</a></li></ol></li>
+    <div class="tb-body">
+      <div class="rail-block">
+        <div class="searchrow">
+          <input aria-label="Search" autocomplete="off" id="q" placeholder="Search…   /" spellcheck="false" type="search"/>
+          <button aria-label="Previous match" class="iconbtn" id="prevhit" title="Previous match (Shift+Enter)" type="button">↑</button>
+          <button aria-label="Next match" class="iconbtn" id="nexthit" title="Next match (Enter)" type="button">↓</button>
+        </div>
 
-</ol></div>
+        <div aria-live="polite" class="count" id="qcount"></div>
 
-<div class="toc-part"><a class="toc-ptitle" href="#part-v"><span>Part V</span>Original documents</a><ol>
+        <div class="opts">
+          <label><input checked="" id="opt-hide" type="checkbox"/> Hide sections without matches</label>
+          <label><input id="opt-orig" type="checkbox"/> Include original documents</label>
+        </div>
+      </div>
 
-<li class="toc-orig"><a href="#doc-types">Types.md</a></li>
 
-</ol></div>
-</nav>
+      <div class="rail-block">
+      <span class="rail-label">Show only</span>
+      <div class="chips" id="statuschips">
+      <button aria-pressed="false" class="chipbtn cod" data-st="cod" type="button">Codified</button>
+      <button aria-pressed="false" class="chipbtn his" data-st="his" type="button">Historical</button>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Library" class="toolbox" id="tb-tools">
+    <header class="tb-head" title="Drag to move">
+      <span class="tb-title">Library</span>
+      <!-- Collapse Button -->
+      <button aria-expanded="true" aria-label="Collapse Library" class="iconbtn" data-act="tb-collapse" type="button">▾</button>
+      <!-- Close Button -->
+      <button aria-label="Hide Library" class="iconbtn" data-act="tb-hide" type="button">✕</button>
+    </header>
+
+    <div class="tb-body">
+      <div class="rail-block">
+        <div class="toolrow">
+          <button class="btn primary" data-act="add-doc" type="button">Add document</button>
+          <button class="btn" data-act="fold-all" type="button">Fold all</button>
+          <button class="btn" data-act="unfold-all" type="button">Unfold all</button>
+          <button class="btn" data-act="print-open" type="button">Print / PDF</button>
+          <button class="btn" data-act="theme" id="themebtn" type="button">Theme: auto</button>
+          <button aria-pressed="false" class="btn" data-act="edit-toggle" id="editbtn" type="button">Edit text</button>
+          <button aria-label="Keyboard shortcuts" class="btn" data-act="help" type="button">?</button>
+          <button class="btn" data-act="tb-reset" title="Put every toolbox back in the docked column" type="button">Reset toolboxes</button>
+        </div>
+      </div>
+
+      <div class="editpanel" id="editpanel">
+        <p id="editstatus">Edit text: choose “Edit section” on any section, change it, then press Done.</p>
+        <ul id="editlist"></ul>
+        <div class="toolrow">
+          <button class="btn primary" data-act="save-version" disabled="" id="savebtn" type="button">Write into page</button>
+          <button class="btn" data-act="download-html" type="button">Download page</button>
+          <button class="btn" data-act="copy-html" type="button">Copy HTML</button>
+          <button class="btn danger" data-act="discard" disabled="" id="discardbtn" type="button">Discard unsaved</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section aria-label="Contents" class="toolbox" id="tb-contents">
+    <header class="tb-head" title="Drag to move">
+      <span aria-hidden="true" class="tb-grip">⋮⋮</span>
+      <span class="tb-title">Contents</span>
+      <!-- Collapse Button -->
+      <button aria-expanded="true" aria-label="Collapse Contents" class="iconbtn" data-act="tb-collapse" type="button">▾</button>
+      <!-- Close Button -->
+      <button aria-label="Hide Contents" class="iconbtn" data-act="tb-hide" type="button">✕</button>
+    </header>
+
+    <div class="tb-body">
+      <nav aria-label="Contents" class="toc">
+        <div class="toc-part"><a class="toc-ptitle" href="#part-ii"><span>Part II</span>Datumatics</a>
+          <ol><li class="toc-doc"><a href="#d-datumatics-theory">Datumatics: the theory</a><ol>
+              <li class="lvl1"><a href="#datumatics">5. Datumatics: the theory</a></li>
+              <li class="lvl2"><a href="#datumatics-definitions">5.1 Definitions, in order of appearance</a></li>
+              <li class="lvl2"><a href="#operators">5.2 The five operators</a></li>
+              <li class="lvl2"><a href="#glossary">5.3 Glossary</a></li>
+              <li class="lvl2"><a href="#statements">5.4 Statements</a></li>
+              <li class="lvl2"><a href="#knowledge-primitives">5.5 Knowledge primitives, composites and processes</a></li>
+              <li class="lvl2"><a href="#datumatics-qa">5.6 Q&amp;A</a></li>
+              <li class="lvl2"><a href="#truth">5.7 Truth, certainty and knowns</a></li>
+              <li class="lvl2"><a href="#p2p-model">5.8 Peer-to-peer transfer model</a></li>
+              <li class="lvl2"><a href="#formats-to-represent">5.9 Formats to represent with Datumatics</a></li>
+              <li class="lvl2"><a href="#datumatics-inspiration">5.10 Inspirations of the methodology</a></li>
+            </ol></li></ol>
+        </div>
+
+        <div class="toc-part">
+          <a class="toc-ptitle" href="#part-v"><span>Part V</span>Original documents</a>
+          <ol><li class="toc-orig"><a href="#doc-types">Types.md</a></li></ol>
+        </div>
+      </nav>
+    </div>
+  </section>
 </div>
-</section>
-</div>
+
+
+
 <main>
-<div class="topbar">
-<div aria-label="Toolboxes" class="tb-dock" role="toolbar"><span class="brandmark">DeForrest</span><button class="btn" data-act="tb-toggle" data-tb="tb-search" title="Show or hide the Search toolbox" type="button">Search</button><button class="btn" data-act="tb-toggle" data-tb="tb-contents" title="Show or hide the Contents toolbox" type="button">Contents</button><button class="btn" data-act="tb-toggle" data-tb="tb-tools" title="Show or hide the Library toolbox" type="button">Library</button></div>
-<button class="btn" data-act="back" id="backbtn" title="Back to where you were (B)" type="button">← Back</button>
-<div class="crumbs" id="crumbs">DeForrest Compendium</div>
-<button class="btn kbtn" data-act="palette" title="Go to anything" type="button">Go to…<kbd>Ctrl K</kbd></button>
-<button class="btn" data-act="graph" title="Content graph (V)" type="button">Graph</button>
-<button aria-pressed="false" class="btn" data-act="focus" id="focusbtn" title="Focused reading (R)" type="button">Focus</button>
-<button class="btn" data-act="pin-here" title="Pin this spot (P)" type="button">Pin spot</button>
-<button aria-pressed="false" class="btn" data-act="pins-toggle" id="pinsbtn" title="Jump points and terms (J)" type="button">Sidebar<span class="pincount" id="pincount"></span></button>
-<div class="progress" id="progress"></div>
-</div>
-<div class="wrap">
-<header class="masthead">
-<div class="eyebrow">Project record</div>
-<h1 class="title">The DeForrest Compendium</h1>
-<p class="lede">Everything defined about DeForrest, from the codified baseline down to historical drafts, arranged as a library of documents. Every original project document is embedded.</p>
-<div class="facts">
-<span><b>17</b> documents</span>
-<span><b>43</b> originals</span>
-<span><b>16</b> diagrams</span>
-<span><b>1,278</b> cross-links</span>
-<span><b>21,874</b> words</span>
-</div>
-<p class="hint">Dotted terms show their definition on hover and link to it. Drag a toolbox by its title to float it anywhere. <kbd>/</kbd> search · <kbd>P</kbd> pin a jump point · <kbd>B</kbd> back · <kbd>[</kbd> <kbd>]</kbd> documents · <kbd>Ctrl</kbd> <kbd>K</kbd> go to anything · <kbd>R</kbd> focus · <kbd>?</kbd> all shortcuts.</p>
-<div class="toolrow" style="margin-top:20px"><button class="btn primary" data-act="graph" type="button">Open the content graph</button><button class="btn" data-act="palette" type="button">Go to anything</button></div>
-<details class="mapwrap" open=""><summary>Map of the library</summary><nav aria-label="Map of this document" class="docmap"><div class="mappart"><a class="mapptitle" href="#part-ii"><span class="mapnum">II</span>Datumatics</a><ul><li><a href="#d-datumatics-theory">Datumatics: the theory</a> <span class="mapk">§5–5.10 · 1,686 words · 7 min read</span></li></ul></div></nav></details>
-</header>
-<div id="print-front"></div>
-<div id="doc"><div id="library"><section class="lib-part" id="part-ii"><header class="part-head"><span class="part-kicker">Part II</span><h1 class="part-title">Datumatics</h1></header><article class="dcard" data-doc="datumatics-theory" data-status="cod his" data-title="Datumatics: the theory" id="d-datumatics-theory"><header class="d-head"><button aria-expanded="true" aria-label="Fold document" class="d-fold" data-act="dfold" type="button">▾</button><div class="d-titles"><div class="d-kicker">§5–5.10 · 1,686 words · 7 min read</div><div aria-level="2" class="d-title" role="heading">Datumatics: the theory</div></div><div class="d-tags"><span class="tag cod" data-tip="Codified: text from Robert’s codified baseline. Authoritative." tabindex="0">Codified</span><span class="tag his" data-tip="Historical: earlier project documents. Uncodified; the baseline governs on conflict." tabindex="0">Historical</span></div><div class="d-bar" role="toolbar"><div class="seg"><button class="segbtn on" data-act="view-rendered" type="button">Read</button><button class="segbtn" data-act="view-raw" type="button">Markdown</button></div><button class="tbtn" data-act="copy-raw" data-tip="Copy this document as Markdown" type="button">Copy</button><button class="tbtn" data-act="dl-doc" data-tip="Download as Markdown; diagrams are included as SVG files in a .zip" type="button">Download</button><button class="tbtn" data-act="replace-doc" data-tip="Replace this document with an uploaded file" type="button">Replace</button><button class="tbtn" data-act="add-after" data-tip="Add a new document after this one" type="button">Add after</button><button class="tbtn" data-act="print-doc" data-tip="Print this document (US Letter or A4), or save it as a PDF" type="button">Print</button><button class="tbtn" data-act="pin-doc" data-tip="Pin this document to the jump list" type="button">Pin</button></div></header><div class="d-body"><div class="d-view d-rendered"><section class="chapter" id="sec-datumatics"><h1 id="datumatics"><button aria-expanded="true" aria-label="Fold chapter" class="fold" data-act="fold" type="button">▾</button>5. <span class="gl" data-tip="Datumatics: a theory of computational structure in which observations are systems of structure, modeled as a protocol over observable, structured state. Absorbed DFWM." tabindex="0">Datumatics</span>: the theory<button aria-label="Copy link to this section" class="hlink" data-act="copy-link" data-id="datumatics" data-tip="Copy link to this section" type="button">#</button></h1>
-<div class="part intro" data-pid="datumatics-intro" data-status="cod"><p><em>Entitled '<a class="xref term" data-tip="Datumatics: a theory of computational structure in which observations are systems of structure, modeled as a protocol over observable, structured state. Absorbed DFWM." href="#datumatics-definitions">Datumatics</a>' to codify a colloquial name, but can be called whatever you may like, as long as we have something commonly to refer to.</em> <a class="xref term" data-tip="DeForrest Workflow Methodology: the retired name, codified directly as Datumatics." href="#methodology">DFWM</a> (<a class="xref term" data-tip="DeForrest Workflow Methodology (DFWM): retired name, codified directly as Datumatics." href="#methodology">DeForrest Workflow Methodology</a>) is codified directly as <a class="xref term rep" data-tip="Datumatics: a theory of computational structure in which observations are systems of structure, modeled as a protocol over observable, structured state. Absorbed DFWM." href="#datumatics-definitions">Datumatics</a>: "There's really no reason to separate the ideas." <span class="tag cod" data-tip="Codified: text from Robert’s codified baseline. Authoritative." tabindex="0">Codified</span></p></div>
-<div class="part" data-pid="datumatics-definitions" data-status="cod his"><h2 id="datumatics-definitions">5.1 Definitions, in order of appearance<button aria-label="Copy link to this section" class="hlink" data-act="copy-link" data-id="datumatics-definitions" data-tip="Copy link to this section" type="button">#</button></h2>
-<div class="scroll"><table>
-<thead>
-<tr>
-<th>Source</th>
-<th>Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a class="xref term" data-tip="Macro.md: the top-most root file of any subject or project." href="#kb-structure">Macro.md</a> (<span class="gl" data-tip="Datumatics: a theory of computational structure in which observations are systems of structure, modeled as a protocol over observable, structured state. Absorbed DFWM." tabindex="0">Datumatics</span> glossary copy) <span class="tag his" data-tip="Historical: earlier project documents. Uncodified; the baseline governs on conflict." tabindex="0">Historical</span></td>
-<td>"A theory of computation where all systems are modeled as a protocol over structured state spaces defined by addressing, projection, transformation, composition, and evaluation operators." A "protocol of knowledge (<a class="xref term" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." href="#glossary">datum</a>) interaction."</td>
-</tr>
-<tr>
-<td>Baseline, "coined" paragraph <span class="tag cod" data-tip="Codified: text from Robert’s codified baseline. Authoritative." tabindex="0">Codified</span></td>
-<td>"A theory that claims observational structure, and computational-structure are derivable, and composable models, that as a protocol, can be applied over structured states and spaces defined by addressing, projection, transformation, composition, and evaluation operators." I.e. a way for humans to store, retrieve, and transfer knowledge between physical and metaphysical realities.</td>
-</tr>
-<tr>
-<td>Baseline glossary <span class="tag cod" data-tip="Codified: text from Robert’s codified baseline. Authoritative." tabindex="0">Codified</span></td>
-<td>"A theory of computational-structure where all observations can be classified as systems of structure that can modeled as a protocol over observable and structured state using addressing, projection, transformation, composition, and processing."</td>
-</tr>
-<tr>
-<td>Baseline glossary, extended <span class="tag cod" data-tip="Codified: text from Robert’s codified baseline. Authoritative." tabindex="0">Codified</span></td>
-<td>"I.e. a peer-to-peer knowledge-interaction protocol that facilitates empirical recordation of human knowledge, unrestricted to external existences; an atomic and dependency-free knowledge management protocol for peer-to-peer transaction."</td>
-</tr>
-<tr>
-<td>Baseline tagline <span class="tag cod" data-tip="Codified: text from Robert’s codified baseline. Authoritative." tabindex="0">Codified</span></td>
-<td>"A way to organize, and refine digital literacy across generations." "A methodology for organizing, storing, and transferring a personal knowledgebase across generations, built on local-first ownership and a single underlying data theory."</td>
-</tr>
-</tbody>
-</table></div>
-<p><strong>Computer Science &amp; <span class="gl" data-tip="Datumatics: a theory of computational structure in which observations are systems of structure, modeled as a protocol over observable, structured state. Absorbed DFWM." tabindex="0">Datumatics</span></strong>: an encompassing phrase for the study of computation, physics, and information within a single frame of reference, grounded in morphology. <em>[Earlier: "Computer Science &amp; Informatics".]</em></p>
-<p><strong>Purpose of codification:</strong> reclassify and re-evaluate the study of computation, electronics, information systems, and decision-making.
-<strong>Posit:</strong> all computational systems reduce to a small set of primitive interaction operations over structured state representations.</p>
-<p>There are three fundamental "subjects of reference framing" (Storing is the one detailed; see <a class="xref secref" data-tip="6. Datumatics: the methodology (formerly DFWM)" href="#methodology">§6</a>). "I'll keep it simple for now, and expose complexity as we go."</p>
-</div><div class="part" data-pid="operators" data-status="mixed"><h2 id="operators">5.2 The five operators<button aria-label="Copy link to this section" class="hlink" data-act="copy-link" data-id="operators" data-tip="Copy link to this section" type="button">#</button></h2>
-<div class="scroll"><table>
-<thead>
-<tr>
-<th>Operator</th>
-<th>Codified meaning (examples)</th>
-<th>Earlier meaning (<a class="xref term" data-tip="Macro.md: the top-most root file of any subject or project." href="#kb-structure">Macro.md</a>)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong><span class="gl" data-tip="Addressing: spatialization of datum (search, query, pointer resolution)." tabindex="0">Addressing</span></strong></td>
-<td>Spatialization of <a class="xref term" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." href="#glossary">datum</a> (search, query, pointer resolution)</td>
-<td>Selecting a region of <a class="xref term rep" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." href="#glossary">datum</a> space</td>
-</tr>
-<tr>
-<td><strong><span class="gl" data-tip="Projection: morphology and interpretation (parse tables, query results, slices)." tabindex="0">Projection</span></strong></td>
-<td>Morphology, interpretation (parsing tables, query results, AST subtrees, slices)</td>
-<td>Extracting a view (query results, AST subtrees, slices)</td>
-</tr>
-<tr>
-<td><strong><span class="gl" data-tip="Transformation: rewriting or updating abstractives (compile, refactor, reindex)." tabindex="0">Transformation</span></strong></td>
-<td>Rewriting or updating <a class="xref term" data-tip="Abstractives: classified, recomposable datums; units in observation." href="#glossary">abstractives</a> (compile, refactor, update index)</td>
-<td>Rewriting or updating structure</td>
-</tr>
-<tr>
-<td><strong><span class="gl" data-tip="Composition: combining abstractives (joins, function composition, merges)." tabindex="0">Composition</span></strong></td>
-<td>Combining <a class="xref term rep" data-tip="Abstractives: classified, recomposable datums; units in observation." href="#glossary">abstractives</a> (joins, function composition, merges)</td>
-<td>Combining structures (joins, function composition, graph merges)</td>
-</tr>
-<tr>
-<td><strong><span class="gl" data-tip="Processing: function over time; collapse into value or further abstractive behavior. The codified fifth operator." tabindex="0">Processing</span></strong></td>
-<td>Function over time; collapse into value or further <a class="xref term" data-tip="Abstractive: a classified, recomposable datum; the unit in observation; the operand." href="#glossary">abstractive</a> behavior (execution, inference, ranking)</td>
-<td><strong><span class="gl" data-tip="Evaluation: the older name for the fifth operator." tabindex="0">Evaluation</span></strong>: collapsing structure into value or behavior</td>
-</tr>
-</tbody>
-</table></div>
-<figure class="dg" data-fig="operators"><div class="dg-wrap"><svg aria-label="Five operators acting on structured state" role="img" style="max-width:800px" viewbox="0 0 800 350"><defs><marker id="f5-a" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path class="ah" d="M0,0 L10,5 L0,10 z"></path></marker></defs><rect class="na" height="60" rx="6" width="200" x="300" y="150"></rect><text class="tb" font-size="13" text-anchor="middle" x="400.0" y="176.1">Structured state</text><text class="ts" font-size="12" text-anchor="middle" x="400.0" y="193.1">datums · abstractives</text><rect class="n" height="64" rx="6" width="240" x="20" y="20"></rect><text class="tb" font-size="13" text-anchor="middle" x="140.0" y="39.5">Addressing</text><text class="ts" font-size="12" text-anchor="middle" x="140.0" y="56.5">spatialization of datum</text><text class="ts" font-size="12" text-anchor="middle" x="140.0" y="73.5">search · query · pointer resolution</text><rect class="n" height="64" rx="6" width="240" x="540" y="20"></rect><text class="tb" font-size="13" text-anchor="middle" x="660.0" y="39.5">Projection</text><text class="ts" font-size="12" text-anchor="middle" x="660.0" y="56.5">morphology, interpretation</text><text class="ts" font-size="12" text-anchor="middle" x="660.0" y="73.5">parse tables · query results · slices</text><rect class="n" height="64" rx="6" width="240" x="20" y="150"></rect><text class="tb" font-size="13" text-anchor="middle" x="140.0" y="169.6">Transformation</text><text class="ts" font-size="12" text-anchor="middle" x="140.0" y="186.6">rewriting or updating</text><text class="ts" font-size="12" text-anchor="middle" x="140.0" y="203.6">compile · refactor · update index</text><rect class="n" height="64" rx="6" width="240" x="540" y="150"></rect><text class="tb" font-size="13" text-anchor="middle" x="660.0" y="169.6">Composition</text><text class="ts" font-size="12" text-anchor="middle" x="660.0" y="186.6">combining abstractives</text><text class="ts" font-size="12" text-anchor="middle" x="660.0" y="203.6">joins · function composition · merges</text><rect class="n" height="64" rx="6" width="240" x="280" y="270"></rect><text class="tb" font-size="13" text-anchor="middle" x="400.0" y="289.6">Processing</text><text class="ts" font-size="12" text-anchor="middle" x="400.0" y="306.6">function over time</text><text class="ts" font-size="12" text-anchor="middle" x="400.0" y="323.6">execution · inference · ranking</text><polyline class="e" fill="none" marker-end="url(#f5-a)" points="200,84 330,148"></polyline><polyline class="e" fill="none" marker-end="url(#f5-a)" points="620,84 470,148"></polyline><polyline class="e" fill="none" marker-end="url(#f5-a)" points="260,182 298,180"></polyline><polyline class="e" fill="none" marker-end="url(#f5-a)" points="540,182 502,180"></polyline><polyline class="e" fill="none" marker-end="url(#f5-a)" points="400,270 400,212"></polyline><text class="tl" font-size="11" text-anchor="start" x="410" y="246">Evaluation in older text</text></svg></div><figcaption>The posit: all computational systems reduce to these primitive interactions over structured state (<a class="xref secref" data-tip="5.2 The five operators" href="#operators">§5.2</a>).</figcaption></figure></div><div class="part" data-pid="glossary" data-status="cod"><h2 id="glossary">5.3 Glossary <span class="tag cod" data-tip="Codified: text from Robert’s codified baseline. Authoritative." tabindex="0">Codified</span><button aria-label="Copy link to this section" class="hlink" data-act="copy-link" data-id="glossary" data-tip="Copy link to this section" type="button">#</button></h2>
-<div class="scroll"><table>
-<thead>
-<tr>
-<th>Term</th>
-<th>Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><span class="gl" data-tip="Observation: a tangible element of reality." tabindex="0">Observation</span></td>
-<td>A tangible element of reality.</td>
-</tr>
-<tr>
-<td>Implementation</td>
-<td>Human-based interaction with or upon an <span class="gl" data-tip="Observation: a tangible element of reality." tabindex="0">observation</span>; usually the interaction itself then becomes a <span class="gl" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." tabindex="0">datum</span>.</td>
-</tr>
-<tr>
-<td><span class="gl" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." tabindex="0">Datum</span></td>
-<td>An encapsulated element of <span class="gl" data-tip="Observation: a tangible element of reality." tabindex="0">observation</span> or implementation.</td>
-</tr>
-<tr>
-<td>Data</td>
-<td>An encapsulated and congruent set of <span class="gl" data-tip="Datums: encapsulated elements of observation or implementation; individual units of data." tabindex="0">datums</span>.</td>
-</tr>
-<tr>
-<td><span class="gl" data-tip="Abstractive: a classified, recomposable datum; the unit in observation; the operand." tabindex="0">Abstractive</span></td>
-<td>A classified, and recomposable <span class="gl" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." tabindex="0">datum</span>. <em>(Absent from the older <a class="xref term" data-tip="Macro.md: the top-most root file of any subject or project." href="#kb-structure">Macro.md</a> glossary.)</em></td>
-</tr>
-<tr>
-<td><span class="gl" data-tip="Relation: a traversable connection between multiple datums." tabindex="0">Relation</span></td>
-<td>A traversable connection between multiple <span class="gl" data-tip="Datums: encapsulated elements of observation or implementation; individual units of data." tabindex="0">datums</span>.</td>
-</tr>
-<tr>
-<td><span class="gl" data-tip="Record: a datum that has been documented." tabindex="0">Record</span></td>
-<td>A <span class="gl" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." tabindex="0">datum</span> that has been documented.</td>
-</tr>
-<tr>
-<td><span class="gl" data-tip="Metadata: external data linked to a datum or data." tabindex="0">Metadata</span></td>
-<td>External data linked to a <span class="gl" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." tabindex="0">datum</span> or data.</td>
-</tr>
-<tr>
-<td><span class="gl" data-tip="Digital Station: a macro-access point for real-time work, working with computers rather than on them." tabindex="0">Digital Station</span></td>
-<td>"Points of access" within a computer for real-time work (working <em>with</em> computers, not <em>on</em> them); macro-access points over a greater system of smaller implements and sub-domains.</td>
-</tr>
-<tr>
-<td><span class="gl" data-tip="Digital Module: a collection of interoperating digital stations and/or microtools that facilitate a workflow." tabindex="0">Digital Module</span></td>
-<td>A collection of interoperational digital stations and/or <span class="gl" data-tip="Microtool: a standalone executable that is singular in implementation detail." tabindex="0">microtools</span> to facilitate a workflow.</td>
-</tr>
-<tr>
-<td><span class="gl" data-tip="Microtool: a standalone executable that is singular in implementation detail." tabindex="0">Microtool</span></td>
-<td>A standalone executable that is singular in implementation detail.</td>
-</tr>
-</tbody>
-</table></div>
-<p><strong>Primitives.</strong> There are "explicit primitives" and "implicit primitives". Explicit primitives are treated as absolutely defined, usable, and recomposable. Implicit primitives are undefined and usable as a metaphysical ideal.</p>
-<p><strong>Frame equations.</strong> Frame &amp; Point == <span class="gl" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." tabindex="0">Datum</span>. Context Window == Point &amp; Data ("Structure of Data"). Context Window &amp; Data == Frame of Reference. <em>(The <a class="xref term" data-tip="DeForrest Workflow Methodology: the retired name, codified directly as Datumatics." href="#methodology">DFWM</a> list also named <span class="gl" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." tabindex="0">Datum</span>, Data, Point, Frame, Frame of Reference as terms.)</em></p>
-</div><div class="part" data-pid="statements" data-status="cod"><h2 id="statements">5.4 Statements <span class="tag cod" data-tip="Codified: text from Robert’s codified baseline. Authoritative." tabindex="0">Codified</span><button aria-label="Copy link to this section" class="hlink" data-act="copy-link" data-id="statements" data-tip="Copy link to this section" type="button">#</button></h2>
-<ul class="cols2">
-<li>A <em><a class="xref term" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." href="#glossary">datum</a></em> at rest carries <em><span class="gl" data-tip="Valence: a datum’s ability to be observed happening; observation actualizes it." tabindex="0">valence</span></em> (the ability to be observed happening); <a class="xref term" data-tip="Observation: a tangible element of reality." href="#glossary">observation</a> actualizes <span class="gl" data-tip="Valence: a datum’s ability to be observed happening; observation actualizes it." tabindex="0">valence</span>; the unit presently in <a class="xref term rep" data-tip="Observation: a tangible element of reality." href="#glossary">observation</a> is the <em><a class="xref term" data-tip="Abstractive: a classified, recomposable datum; the unit in observation; the operand." href="#glossary">abstractive</a></em>.</li>
-<li><strong><a class="xref term rep" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." href="#glossary">Datum</a></strong>: unit at rest, addressable.</li>
-<li><strong><a class="xref term rep" data-tip="Abstractive: a classified, recomposable datum; the unit in observation; the operand." href="#glossary">Abstractive</a></strong>: unit in <a class="xref term rep" data-tip="Observation: a tangible element of reality." href="#glossary">observation</a>, operand.</li>
-<li><strong><a class="xref term" data-tip="Knowledgebase: the storage root for knowledge-notation; as ULL, the unit in transit." href="#storage">Knowledgebase</a> (<a class="xref term" data-tip="Universal Logic Language: the syntax and schema layer of Datumatics; the knowledgebase as unit in transit." href="#ull">ULL</a>)</strong>: unit in transit; documented form projectable by another mind.</li>
-<li>Codified output types are required; <code class="gl" data-tip='Any: "Any is not viable" for codified output types.' tabindex="0">Any</code> is not viable.</li>
-<li>A <a class="xref term rep" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." href="#glossary">datum</a> with perfect and apparent <span class="gl" data-tip="Valence: a datum’s ability to be observed happening; observation actualizes it." tabindex="0">valence</span> is preferred to a <a class="xref term rep" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." href="#glossary">datum</a> with chaotic <span class="gl" data-tip="Valence: a datum’s ability to be observed happening; observation actualizes it." tabindex="0">valence</span>.</li>
-</ul>
-<figure class="dg" data-fig="datum-states"><div class="dg-wrap"><svg aria-label="Datum at rest becomes an abstractive in observation and a knowledgebase in transit" role="img" style="max-width:860px" viewbox="0 0 860 250"><defs><marker id="f4-a" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path class="ah" d="M0,0 L10,5 L0,10 z"></path></marker></defs><rect class="n" height="80" rx="6" width="200" x="20" y="70"></rect><text class="tb" font-size="13" text-anchor="middle" x="120.0" y="97.5">Datum</text><text class="ts" font-size="12" text-anchor="middle" x="120.0" y="114.5">unit at rest</text><text class="ts" font-size="12" text-anchor="middle" x="120.0" y="131.6">addressable · carries valence</text><rect class="na" height="80" rx="6" width="200" x="330" y="70"></rect><text class="tb" font-size="13" text-anchor="middle" x="430.0" y="97.5">Abstractive</text><text class="ts" font-size="12" text-anchor="middle" x="430.0" y="114.5">unit in observation</text><text class="ts" font-size="12" text-anchor="middle" x="430.0" y="131.6">operand of the operators</text><rect class="n" height="80" rx="6" width="200" x="640" y="70"></rect><text class="tb" font-size="13" text-anchor="middle" x="740.0" y="97.5">Knowledgebase (ULL)</text><text class="ts" font-size="12" text-anchor="middle" x="740.0" y="114.5">unit in transit</text><text class="ts" font-size="12" text-anchor="middle" x="740.0" y="131.6">projectable by another mind</text><polyline class="e" fill="none" marker-end="url(#f4-a)" points="220,110 328,110"></polyline><text class="tl" font-size="11" text-anchor="middle" x="275" y="100">observation</text><text class="tl" font-size="11" text-anchor="middle" x="275" y="128">actualizes valence</text><polyline class="e" fill="none" marker-end="url(#f4-a)" points="530,110 638,110"></polyline><text class="tl" font-size="11" text-anchor="middle" x="585" y="100">documented form</text><polyline class="e" fill="none" marker-end="url(#f4-a)" points="740,150 740,205 120,205 120,152"></polyline><text class="tl" font-size="11" text-anchor="middle" x="430" y="222">received and parsed by a peer's local compiler</text><text class="tb" font-size="12" text-anchor="middle" x="430" y="40">Addressing · Projection · Transformation · Composition · Processing</text><polyline class="e" fill="none" marker-end="url(#f4-a)" points="430,46 430,68"></polyline></svg></div><figcaption>The rest / <a class="xref term rep" data-tip="Observation: a tangible element of reality." href="#glossary">observation</a> / transit triad from the codified Statements (<a class="xref secref" data-tip="5.4 Statements" href="#statements">§5.4</a>), with the transfer model of <a class="xref secref" data-tip="5.8 Peer-to-peer transfer model" href="#p2p-model">§5.8</a> closing the loop.</figcaption></figure></div><div class="part" data-pid="knowledge-primitives" data-status="cod"><h2 id="knowledge-primitives">5.5 Knowledge primitives, composites and processes <span class="tag cod" data-tip="Codified: text from Robert’s codified baseline. Authoritative." tabindex="0">Codified</span><button aria-label="Copy link to this section" class="hlink" data-act="copy-link" data-id="knowledge-primitives" data-tip="Copy link to this section" type="button">#</button></h2>
-<p><strong>Primitives</strong></p>
-<ul class="cols2">
-<li><a class="xref term" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." href="#glossary">Datum</a> == Unit of Knowledge == Abstraction == Value — the fundamental knowledge unit.</li>
-<li><a class="xref term" data-tip="Abstractive: a classified, recomposable datum; the unit in observation; the operand." href="#glossary">Abstractive</a> == Contextually Present Unit of Knowledge == Instantiate — a <a class="xref term rep" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." href="#glossary">datum</a> being observed.</li>
-<li>Language == Artificial Symbolism for Mnemonic &amp; Empirical Communication — a methodology for empirically driven communication.</li>
-<li>Compositor == Constructor == Language Unit == Mapping — units of language as <a class="xref term" data-tip="Abstractives: classified, recomposable datums; units in observation." href="#glossary">abstractives</a>.</li>
-</ul>
-<p><strong>Composites</strong></p>
-<ul class="cols2">
-<li>Set == Data == Relational == Extensional — a collection, compilation, or linking of units.</li>
-<li>Process == Function == Methodology — a description of a thing happening over time.</li>
-<li>Motion == Time == Transform — an <a class="xref term" data-tip="Observation: a tangible element of reality." href="#glossary">observation</a> of a description of a thing happening over time.</li>
-<li>Ordered == Contiguous — things permutated in a single <a class="xref term rep" data-tip="Observation: a tangible element of reality." href="#glossary">observation</a>, without interstice.</li>
-<li><a class="xref term" data-tip="Valence: a datum’s ability to be observed happening; observation actualizes it." href="#statements">Valence</a> == Weight == Mass == Energy — a thing's ability to be observed happening.</li>
-<li>Isomorphic == Identical == Univalent — the trait of a <a class="xref term rep" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." href="#glossary">datum</a> being observably identical to another <a class="xref term rep" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." href="#glossary">datum</a>.</li>
-</ul>
-<p><strong>Processes</strong></p>
-<ul>
-<li>Searching == Filtering == Indexing</li>
-<li>Compilation == Rendering == <a class="xref term" data-tip="Composition: combining abstractives (joins, function composition, merges)." href="#operators">Composition</a></li>
-<li>Process == Transforming == <em>(left incomplete in source)</em></li>
-</ul>
-</div><div class="part" data-pid="datumatics-qa" data-status="cod"><h2 id="datumatics-qa">5.6 Q&amp;A <span class="tag cod" data-tip="Codified: text from Robert’s codified baseline. Authoritative." tabindex="0">Codified</span><button aria-label="Copy link to this section" class="hlink" data-act="copy-link" data-id="datumatics-qa" data-tip="Copy link to this section" type="button">#</button></h2>
-<blockquote>
-<p><strong>Q:</strong> Why "<a class="xref term" data-tip="Datums: encapsulated elements of observation or implementation; individual units of data." href="#glossary">datums</a>" instead of data?
-<strong>A:</strong> To connect better in idealization with working individual units of data: <a class="xref term rep" data-tip="Datums: encapsulated elements of observation or implementation; individual units of data." href="#glossary">datums</a>. A function of first-order logic, or first-principle thinking in <em>how data is structured, and its processes</em> <strong>before</strong> <em>it's worked on by said processes</em>.</p>
-<p><strong>Q:</strong> What is an "<a class="xref term" data-tip="Abstractive: a classified, recomposable datum; the unit in observation; the operand." href="#glossary">abstractive</a> unit" versus a "<a class="xref term" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." href="#glossary">datum</a> unit"?
-<strong>A:</strong> An <a class="xref term rep" data-tip="Abstractive: a classified, recomposable datum; the unit in observation; the operand." href="#glossary">abstractive</a> unit is a <a class="xref term rep" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." href="#glossary">datum</a> within a working context, or within observance. A <a class="xref term rep" data-tip="Datum: an encapsulated element of observation or implementation. At rest, addressable, carries valence." href="#glossary">datum</a> unit is held in storage "at a resting state". Both are <em>units of knowledge</em>.</p>
-</blockquote>
-</div><div class="part" data-pid="truth" data-status="cod"><h2 id="truth">5.7 Truth, certainty and knowns <span class="tag cod" data-tip="Codified: text from Robert’s codified baseline. Authoritative." tabindex="0">Codified</span><button aria-label="Copy link to this section" class="hlink" data-act="copy-link" data-id="truth" data-tip="Copy link to this section" type="button">#</button></h2>
-<p><strong>Authority of Truth &amp; Social Contracts of Proofs of Truth</strong></p>
-<ul>
-<li>Treat local storage as the primary source of truth; distributed systems are backups, not authority.</li>
-<li><strong>You</strong>, a <strong>single individual</strong>, are the authority of the primary source of truth. A distributed primary source of truth <em>only works as a standard agreement, never as a certifiable contract.</em></li>
-<li>Communal distributions of <em>proofs</em> of truth are the only valid social contract with empirical value; not the proposed truths themselves. Only an individual within their own mind can determine truth with certainty. The value of a social contract lies in the empirical value of the proof of truth.</li>
-</ul>
-<p><strong>The <span class="gl" data-tip="Table of Certainty: False, Falsey, Falsish, Unknown, Truthish, Truthy, True." tabindex="0">Table of Certainty</span></strong></p>
-<div class="scroll"><table>
-<thead>
-<tr>
-<th>100%</th>
-<th>99%</th>
-<th>50%</th>
-<th>0%</th>
-<th>50%</th>
-<th>99%</th>
-<th>100%</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>False</td>
-<td>Falsey</td>
-<td>Falsish</td>
-<td>Unknown</td>
-<td>Truthish</td>
-<td>Truthy</td>
-<td>True</td>
-</tr>
-</tbody>
-</table></div>
-<p><strong>The four types of knowns:</strong> Known Known · Unknown Known · Known Unknown · Unknown Unknown.</p>
-<p>"This is not meant to <strong>find</strong> unknown knowledge, it's meant to <strong>record</strong> known knowledge."</p>
-<figure class="dg" data-fig="certainty"><div class="dg-wrap"><svg aria-label="Table of Certainty from False through Unknown to True" role="img" style="max-width:760px" viewbox="0 0 760 120"><defs><marker id="f6-a" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path class="ah" d="M0,0 L10,5 L0,10 z"></path></marker></defs><line class="e" x1="50" x2="710" y1="60" y2="60"></line><circle class="dotf" cx="50" cy="60" r="10"></circle><text class="ts" font-size="11" text-anchor="middle" x="50" y="36">100%</text><text class="tb" font-size="12" text-anchor="middle" x="50" y="92">False</text><circle class="dotf" cx="160" cy="60" r="7"></circle><text class="ts" font-size="11" text-anchor="middle" x="160" y="36">99%</text><text class="tb" font-size="12" text-anchor="middle" x="160" y="92">Falsey</text><circle class="dotf" cx="270" cy="60" r="5"></circle><text class="ts" font-size="11" text-anchor="middle" x="270" y="36">50%</text><text class="tb" font-size="12" text-anchor="middle" x="270" y="92">Falsish</text><circle class="dotu" cx="380" cy="60" r="6"></circle><text class="ts" font-size="11" text-anchor="middle" x="380" y="36">0%</text><text class="tb" font-size="12" text-anchor="middle" x="380" y="92">Unknown</text><circle class="dott" cx="490" cy="60" r="5"></circle><text class="ts" font-size="11" text-anchor="middle" x="490" y="36">50%</text><text class="tb" font-size="12" text-anchor="middle" x="490" y="92">Truthish</text><circle class="dott" cx="600" cy="60" r="7"></circle><text class="ts" font-size="11" text-anchor="middle" x="600" y="36">99%</text><text class="tb" font-size="12" text-anchor="middle" x="600" y="92">Truthy</text><circle class="dott" cx="710" cy="60" r="10"></circle><text class="ts" font-size="11" text-anchor="middle" x="710" y="36">100%</text><text class="tb" font-size="12" text-anchor="middle" x="710" y="92">True</text></svg></div><figcaption>Certainty grows toward both ends; the centre is Unknown (<a class="xref secref" data-tip="5.7 Truth, certainty and knowns" href="#truth">§5.7</a>).</figcaption></figure></div><div class="part" data-pid="p2p-model" data-status="cod"><h2 id="p2p-model">5.8 Peer-to-peer transfer model <span class="tag cod" data-tip="Codified: text from Robert’s codified baseline. Authoritative." tabindex="0">Codified</span><button aria-label="Copy link to this section" class="hlink" data-act="copy-link" data-id="p2p-model" data-tip="Copy link to this section" type="button">#</button></h2>
-<ul class="cols2">
-<li>Localized compilers on receiving peer-to-peer machines parse/decode the given information. All processes are local, defined by the given parse.</li>
-<li>Parses are <em>always</em> manually executed, otherwise automated only by the receiving user's own implementation.</li>
-<li>What is transferred is text-only: <em>how</em> things are to be parsed and processed. Only the receiving, localized, virtual compiler parses and processes the content, then presents it according to the user's defined interface.</li>
-<li><strong>The <span class="gl" data-tip="Anonymous Enhancement Proposal: anonymous-by-default peer review of someone else’s abstractives." tabindex="0">Anonymous Enhancement Proposal</span>.</strong> A peer-to-peer proposal method for information review and refinement. Anonymous by default. Lets a peer create a review of someone else's current <a class="xref term" data-tip="Abstractives: classified, recomposable datums; units in observation." href="#glossary">abstractives</a>. "<a class="xref term" data-tip="Abstractive: a classified, recomposable datum; the unit in observation; the operand." href="#glossary">Abstractive</a> Argumentation": a base methodology for peer-to-peer grounding of truth.</li>
-<li><strong><span class="gl" data-tip="Diff-based P2P Sync: a sync that depicts the difference between two knowledgebases." tabindex="0">Diff-based Peer-to-Peer Sync</span>.</strong> A sync that depicts the difference between two knowledgebases.</li>
-</ul>
-<figure class="dg" data-fig="p2p"><div class="dg-wrap"><svg aria-label="Peer-to-peer transfer: text-only parse and process rules travel; the receiver parses and processes locally" role="img" style="max-width:800px" viewbox="0 0 800 230"><defs><marker id="f8-a" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path class="ah" d="M0,0 L10,5 L0,10 z"></path></marker></defs><rect class="n" height="90" rx="6" width="200" x="20" y="60"></rect><text class="tb" font-size="13" text-anchor="middle" x="120.0" y="92.5">Sending peer</text><text class="ts" font-size="12" text-anchor="middle" x="120.0" y="109.5">local storage =</text><text class="ts" font-size="12" text-anchor="middle" x="120.0" y="126.5">primary source of truth</text><rect class="nl" height="70" rx="6" width="200" x="300" y="70"></rect><text class="tb" font-size="12" text-anchor="middle" x="400.0" y="93.2">Text-only transfer</text><text class="ts" font-size="11" text-anchor="middle" x="400.0" y="109.2">how to parse + process</text><text class="ts" font-size="11" text-anchor="middle" x="400.0" y="125.2">(+ datums)</text><rect class="na" height="50" rx="6" width="200" x="580" y="30"></rect><text class="tb" font-size="12" text-anchor="middle" x="680.0" y="51.2">Localized virtual compiler</text><text class="ts" font-size="11" text-anchor="middle" x="680.0" y="67.2">on receiving machine</text><rect class="n" height="40" rx="6" width="200" x="580" y="100"></rect><text class="tb" font-size="12" text-anchor="middle" x="680.0" y="124.2">Parse → process</text><rect class="n" height="40" rx="6" width="200" x="580" y="160"></rect><text class="tb" font-size="12" text-anchor="middle" x="680.0" y="184.2">User-defined interface</text><polyline class="e" fill="none" marker-end="url(#f8-a)" points="220,105 298,105"></polyline><polyline class="e" fill="none" marker-end="url(#f8-a)" points="500,105 540,105 540,55 578,55"></polyline><polyline class="e" fill="none" marker-end="url(#f8-a)" points="680,80 680,98"></polyline><polyline class="e" fill="none" marker-end="url(#f8-a)" points="680,140 680,158"></polyline><text class="tl" font-size="11" text-anchor="middle" x="400" y="190">Parses are always manually executed,</text><text class="tl" font-size="11" text-anchor="middle" x="400" y="206">otherwise automated only by the receiver’s own implementation.</text></svg></div><figcaption>The codified transfer model (<a class="xref secref" data-tip="5.8 Peer-to-peer transfer model" href="#p2p-model">§5.8</a>): nothing executes remotely; the receiving peer decides.</figcaption></figure></div><div class="part" data-pid="formats-to-represent" data-status="cod"><h2 id="formats-to-represent">5.9 Formats to represent with <span class="gl" data-tip="Datumatics: a theory of computational structure in which observations are systems of structure, modeled as a protocol over observable, structured state. Absorbed DFWM." tabindex="0">Datumatics</span> <span class="tag cod" data-tip="Codified: text from Robert’s codified baseline. Authoritative." tabindex="0">Codified</span><button aria-label="Copy link to this section" class="hlink" data-act="copy-link" data-id="formats-to-represent" data-tip="Copy link to this section" type="button">#</button></h2>
-<p>The Atom · Periodic Table · A Person · Dictionary · Graphic · E=MC <em>(sic)</em> · Math Formula · Image · Video · Event · Relationship Tree · Document · Website.</p>
-</div><div class="part" data-pid="datumatics-inspiration" data-status="cod"><h2 id="datumatics-inspiration">5.10 Inspirations of the methodology <span class="tag cod" data-tip="Codified: text from Robert’s codified baseline. Authoritative." tabindex="0">Codified</span><button aria-label="Copy link to this section" class="hlink" data-act="copy-link" data-id="datumatics-inspiration" data-tip="Copy link to this section" type="button">#</button></h2>
-<p><a class="xref term" data-tip="Datumatics: a theory of computational structure in which observations are systems of structure, modeled as a protocol over observable, structured state. Absorbed DFWM." href="#datumatics-definitions">Datumatics</a> is foundationally inspired by the era of UNIX, and embraces the market requirements Apple exposed: computation as a utility outside the hands of technicalists. UNIX <a class="xref term" data-tip="Captured: data stored as a usable variable; uncaptured data is not stored." href="#pineapple-terms">captured</a> computing and its utilitarian use between 1965 and 1978; Apple redefined colloquial understanding of <em>what</em> computing was and how it was used.</p>
-<p>The document aims to be digestible in one or two sittings: a "foundational reference manual for organization based for high-stress, and high-skill use"; a "standardized grounding for digital literacy between platforms and environments" giving someone "a ground to stand on". Customization and extension are encouraged. Following the base at minimum yields a modern, secure, portable knowledgebase and knowledge-management system.</p>
-</div></section><div class="srcchips"><span class="srclabel">Source documents</span><a class="chip" data-tip="Open the original: claude/DeForrest Codified Baseline - Part 1 of 2.md" href="#doc-baseline-1">DeForrest Codified Baseline - Part 1 of 2</a><a class="chip" data-tip="Open the original: claude/DeForrest Codified Baseline - Part 2 of 2.md" href="#doc-baseline-2">DeForrest Codified Baseline - Part 2 of 2</a><a class="chip" data-tip="Open the original: Macro.md (Datumatics glossary copy)" href="#doc-macro-datumatics">Macro (Datumatics glossary copy)</a></div></div><div class="d-view d-raw" hidden=""></div><template class="t-raw"><pre class="rawmd"># 5. Datumatics: the theory
+  <div class="topbar">
+    <div aria-label="Toolboxes" class="tb-dock" role="toolbar">
+      <span class="brandmark">DeForrest</span>
+      <button class="btn" data-act="tb-toggle" data-tb="tb-search" title="Show or hide the Search toolbox" type="button">Search</button>
+      <button class="btn" data-act="tb-toggle" data-tb="tb-contents" title="Show or hide the Contents toolbox" type="button">Contents</button>
+      <button class="btn" data-act="tb-toggle" data-tb="tb-tools" title="Show or hide the Library toolbox" type="button">Library</button>
+    </div>
 
-*Entitled 'Datumatics' to codify a colloquial name, but can be called whatever you may like, as long as we have something commonly to refer to.* DFWM (DeForrest Workflow Methodology) is codified directly as Datumatics: "There's really no reason to separate the ideas." *[Codified]*
+    <!-- Back Button that shows up after any link interaction -->
+    <button class="btn" data-act="back" id="backbtn" title="Back to where you were (B)" type="button">← Back</button>
 
-## 5.1 Definitions, in order of appearance
+    <div class="crumbs" id="crumbs">DeForrest Compendium</div>
 
-| Source | Definition |
-|---|---|
-| Macro.md (Datumatics glossary copy) *[Historical]* | "A theory of computation where all systems are modeled as a protocol over structured state spaces defined by addressing, projection, transformation, composition, and evaluation operators." A "protocol of knowledge (datum) interaction." |
-| Baseline, "coined" paragraph *[Codified]* | "A theory that claims observational structure, and computational-structure are derivable, and composable models, that as a protocol, can be applied over structured states and spaces defined by addressing, projection, transformation, composition, and evaluation operators." I.e. a way for humans to store, retrieve, and transfer knowledge between physical and metaphysical realities. |
-| Baseline glossary *[Codified]* | "A theory of computational-structure where all observations can be classified as systems of structure that can modeled as a protocol over observable and structured state using addressing, projection, transformation, composition, and processing." |
-| Baseline glossary, extended *[Codified]* | "I.e. a peer-to-peer knowledge-interaction protocol that facilitates empirical recordation of human knowledge, unrestricted to external existences; an atomic and dependency-free knowledge management protocol for peer-to-peer transaction." |
-| Baseline tagline *[Codified]* | "A way to organize, and refine digital literacy across generations." "A methodology for organizing, storing, and transferring a personal knowledgebase across generations, built on local-first ownership and a single underlying data theory." |
+    <!-- This is the Go To... bar; I don't like it -->
+    <button class="btn kbtn" data-act="palette" title="Go to anything" type="button">
+      Go to…
+      <kbd>Ctrl K</kbd>
+    </button>
 
-**Computer Science &amp; Datumatics**: an encompassing phrase for the study of computation, physics, and information within a single frame of reference, grounded in morphology. *[Earlier: "Computer Science &amp; Informatics".]*
+    <button class="btn" data-act="graph" title="Content graph (V)" type="button">Graph</button>
+    <button aria-pressed="false" class="btn" data-act="focus" id="focusbtn" title="Focused reading (R)" type="button">Focus</button>
+    <button class="btn" data-act="pin-here" title="Pin this spot (P)" type="button">Pin spot</button>
 
-**Purpose of codification:** reclassify and re-evaluate the study of computation, electronics, information systems, and decision-making.
-**Posit:** all computational systems reduce to a small set of primitive interaction operations over structured state representations.
+    <button aria-pressed="false" class="btn" data-act="pins-toggle" id="pinsbtn" title="Jump points and terms (J)" type="button">
+      Sidebar
+      <span class="pincount" id="pincount"></span>
+    </button>
 
-There are three fundamental "subjects of reference framing" (Storing is the one detailed; see §6). "I'll keep it simple for now, and expose complexity as we go."
+    <!-- The content progress bar at the bottom of the top bar -->
+    <div class="progress" id="progress"></div>
+  </div>
 
-## 5.2 The five operators
+  <!-- Generic content wrapper, this needs to be better named, and abstracted over -->
+  <div class="wrap">
+    <header class="masthead">
+      <div class="eyebrow">Project record</div>
+      <h1 class="title">The DeForrest Compendium</h1>
+      <p class="lede">
+        Everything defined about DeForrest, from the codified baseline down to historical drafts, arranged as a library of documents. Every original project document is embedded.
+      </p>
 
-| Operator | Codified meaning (examples) | Earlier meaning (Macro.md) |
-|---|---|---|
-| **Addressing** | Spatialization of datum (search, query, pointer resolution) | Selecting a region of datum space |
-| **Projection** | Morphology, interpretation (parsing tables, query results, AST subtrees, slices) | Extracting a view (query results, AST subtrees, slices) |
-| **Transformation** | Rewriting or updating abstractives (compile, refactor, update index) | Rewriting or updating structure |
-| **Composition** | Combining abstractives (joins, function composition, merges) | Combining structures (joins, function composition, graph merges) |
-| **Processing** | Function over time; collapse into value or further abstractive behavior (execution, inference, ranking) | **Evaluation**: collapsing structure into value or behavior |
+      <div class="facts">
+        <span><b>17</b> documents</span>
+        <span><b>43</b> originals</span>
+        <span><b>16</b> diagrams</span>
+        <span><b>1,278</b> cross-links</span>
+        <span><b>21,874</b> words</span>
+      </div>
 
-![The posit: all computational systems reduce to these primitive interactions over structured state ( §5.2 ).](images/operators.svg)
+      <p class="hint">
+        Dotted terms show their definition on hover and link to it. Drag a toolbox by its title to float it anywhere.
+        <kbd>/</kbd> search ·
+        <kbd>P</kbd> pin a jump point ·
+        <kbd>B</kbd> back ·
+        <kbd>[</kbd> <kbd>]</kbd> documents ·
+        <kbd>Ctrl</kbd>
+        <kbd>K</kbd> go to anything ·
+        <kbd>R</kbd> focus ·
+        <kbd>?</kbd> all shortcuts.
+      </p>
 
-## 5.3 Glossary *[Codified]*
+      <div class="toolrow" style="margin-top:20px">
+        <button class="btn primary" data-act="graph" type="button">Open the content graph</button>
+        <button class="btn" data-act="palette" type="button">Go to anything</button>
+      </div>
 
-| Term | Definition |
-|---|---|
-| Observation | A tangible element of reality. |
-| Implementation | Human-based interaction with or upon an observation; usually the interaction itself then becomes a datum. |
-| Datum | An encapsulated element of observation or implementation. |
-| Data | An encapsulated and congruent set of datums. |
-| Abstractive | A classified, and recomposable datum. *(Absent from the older Macro.md glossary.)* |
-| Relation | A traversable connection between multiple datums. |
-| Record | A datum that has been documented. |
-| Metadata | External data linked to a datum or data. |
-| Digital Station | "Points of access" within a computer for real-time work (working *with* computers, not *on* them); macro-access points over a greater system of smaller implements and sub-domains. |
-| Digital Module | A collection of interoperational digital stations and/or microtools to facilitate a workflow. |
-| Microtool | A standalone executable that is singular in implementation detail. |
+      <details class="mapwrap" open="">
+        <summary>Map of the library</summary>
+        <nav aria-label="Map of this document" class="docmap">
+          <div class="mappart">
+            <a class="mapptitle" href="#part-ii">
+              <span class="mapnum">II</span>
+              Datumatics
+            </a>
+            <ul><li>
+              <a href="#d-datumatics-theory">Datumatics: the theory</a>
+              <span class="mapk">§5–5.10 · 1,686 words · 7 min read</span>
+            </li></ul>
+          </div>
+        </nav>
+      </details>
+    </header>
 
-**Primitives.** There are "explicit primitives" and "implicit primitives". Explicit primitives are treated as absolutely defined, usable, and recomposable. Implicit primitives are undefined and usable as a metaphysical ideal.
+    <div id="print-front"></div>
 
-**Frame equations.** Frame &amp; Point == Datum. Context Window == Point &amp; Data ("Structure of Data"). Context Window &amp; Data == Frame of Reference. *(The DFWM list also named Datum, Data, Point, Frame, Frame of Reference as terms.)*
+    <!-- Example Document Begin-->
+    <div id="doc">
+      <section class="lib-part" id="part-ii">
+        <header class="part-head">
+          <span class="part-kicker">Example I</span>
+          <h1 class="part-title">Example Document/Chapter Title</h1>
+        </header>
 
-## 5.4 Statements *[Codified]*
+        <article class="dcard" data-doc="datumatics-theory" data-status="cod his" data-title="Datumatics: the theory" id="d-datumatics-theory">
+          <header class="d-head"><button aria-expanded="true" aria-label="Fold document" class="d-fold" data-act="dfold" type="button">▾</button>
+            <div class="d-titles"><div class="d-kicker">§0–0.0 · 0,000 words · 0 min read</div>
+              <div aria-level="2" class="d-title" role="heading">Document Title</div>
+            </div>
+            <div class="d-tags">
+              <span class="tag cod" data-tip="Codified: text from Robert’s codified baseline. Authoritative." tabindex="0">Codified</span>
+              <span class="tag his" data-tip="Historical: earlier project documents. Uncodified; the baseline governs on conflict." tabindex="0">
+                Historical
+              </span>
+            </div>
 
-- A *datum* at rest carries *valence* (the ability to be observed happening); observation actualizes valence; the unit presently in observation is the *abstractive*.
-- **Datum**: unit at rest, addressable.
-- **Abstractive**: unit in observation, operand.
-- **Knowledgebase (ULL)**: unit in transit; documented form projectable by another mind.
-- Codified output types are required; `Any` is not viable.
-- A datum with perfect and apparent valence is preferred to a datum with chaotic valence.
+            <div class="d-bar" role="toolbar">
+              <div class="seg"><button class="segbtn on" data-act="view-rendered" type="button">Read</button>
+                <button class="segbtn" data-act="view-raw" type="button">Markdown</button>
+              </div>
+              <button class="tbtn" data-act="copy-raw" data-tip="Copy this document as Markdown" type="button">Copy</button>
+              <button class="tbtn" data-act="dl-doc" data-tip="Download as Markdown; diagrams are included as SVG files in a .zip" type="button">
+                Download
+              </button>
+              <button class="tbtn" data-act="replace-doc" data-tip="Replace this document with an uploaded file" type="button">Replace</button>
+              <button class="tbtn" data-act="add-after" data-tip="Add a new document after this one" type="button">Add after</button>
+              <button class="tbtn" data-act="print-doc" data-tip="Print this document (US Letter or A4), or save it as a PDF" type="button">
+                Print
+              </button>
+              <button class="tbtn" data-act="pin-doc" data-tip="Pin this document to the jump list" type="button">Pin</button>
+            </div>
+          </header>
 
-![The rest / observation / transit triad from the codified Statements ( §5.4 ), with the transfer model of §5.8 closing the loop.](images/datum-states.svg)
-
-## 5.5 Knowledge primitives, composites and processes *[Codified]*
-
-**Primitives**
-
-- Datum == Unit of Knowledge == Abstraction == Value — the fundamental knowledge unit.
-- Abstractive == Contextually Present Unit of Knowledge == Instantiate — a datum being observed.
-- Language == Artificial Symbolism for Mnemonic &amp; Empirical Communication — a methodology for empirically driven communication.
-- Compositor == Constructor == Language Unit == Mapping — units of language as abstractives.
-
-**Composites**
-
-- Set == Data == Relational == Extensional — a collection, compilation, or linking of units.
-- Process == Function == Methodology — a description of a thing happening over time.
-- Motion == Time == Transform — an observation of a description of a thing happening over time.
-- Ordered == Contiguous — things permutated in a single observation, without interstice.
-- Valence == Weight == Mass == Energy — a thing's ability to be observed happening.
-- Isomorphic == Identical == Univalent — the trait of a datum being observably identical to another datum.
-
-**Processes**
-
-- Searching == Filtering == Indexing
-- Compilation == Rendering == Composition
-- Process == Transforming == *(left incomplete in source)*
-
-## 5.6 Q&amp;A *[Codified]*
-
-&gt; **Q:** Why "datums" instead of data?
-&gt; **A:** To connect better in idealization with working individual units of data: datums. A function of first-order logic, or first-principle thinking in *how data is structured, and its processes* **before** *it's worked on by said processes*.
-
-&gt; **Q:** What is an "abstractive unit" versus a "datum unit"?
-&gt; **A:** An abstractive unit is a datum within a working context, or within observance. A datum unit is held in storage "at a resting state". Both are *units of knowledge*.
-
-## 5.7 Truth, certainty and knowns *[Codified]*
-
-**Authority of Truth &amp; Social Contracts of Proofs of Truth**
-
-- Treat local storage as the primary source of truth; distributed systems are backups, not authority.
-- **You**, a **single individual**, are the authority of the primary source of truth. A distributed primary source of truth *only works as a standard agreement, never as a certifiable contract.*
-- Communal distributions of *proofs* of truth are the only valid social contract with empirical value; not the proposed truths themselves. Only an individual within their own mind can determine truth with certainty. The value of a social contract lies in the empirical value of the proof of truth.
-
-**The Table of Certainty**
-
-| 100% | 99% | 50% | 0% | 50% | 99% | 100% |
-|---|---|---|---|---|---|---|
-| False | Falsey | Falsish | Unknown | Truthish | Truthy | True |
-
-**The four types of knowns:** Known Known · Unknown Known · Known Unknown · Unknown Unknown.
-
-"This is not meant to **find** unknown knowledge, it's meant to **record** known knowledge."
-
-![Certainty grows toward both ends; the centre is Unknown ( §5.7 ).](images/certainty.svg)
-
-## 5.8 Peer-to-peer transfer model *[Codified]*
-
-- Localized compilers on receiving peer-to-peer machines parse/decode the given information. All processes are local, defined by the given parse.
-- Parses are *always* manually executed, otherwise automated only by the receiving user's own implementation.
-- What is transferred is text-only: *how* things are to be parsed and processed. Only the receiving, localized, virtual compiler parses and processes the content, then presents it according to the user's defined interface.
-- **The Anonymous Enhancement Proposal.** A peer-to-peer proposal method for information review and refinement. Anonymous by default. Lets a peer create a review of someone else's current abstractives. "Abstractive Argumentation": a base methodology for peer-to-peer grounding of truth.
-- **Diff-based Peer-to-Peer Sync.** A sync that depicts the difference between two knowledgebases.
-
-![The codified transfer model ( §5.8 ): nothing executes remotely; the receiving peer decides.](images/p2p.svg)
-
-## 5.9 Formats to represent with Datumatics *[Codified]*
-
-The Atom · Periodic Table · A Person · Dictionary · Graphic · E=MC *(sic)* · Math Formula · Image · Video · Event · Relationship Tree · Document · Website.
-
-## 5.10 Inspirations of the methodology *[Codified]*
-
-Datumatics is foundationally inspired by the era of UNIX, and embraces the market requirements Apple exposed: computation as a utility outside the hands of technicalists. UNIX captured computing and its utilitarian use between 1965 and 1978; Apple redefined colloquial understanding of *what* computing was and how it was used.
-
-The document aims to be digestible in one or two sittings: a "foundational reference manual for organization based for high-stress, and high-skill use"; a "standardized grounding for digital literacy between platforms and environments" giving someone "a ground to stand on". Customization and extension are encouraged. Following the base at minimum yields a modern, secure, portable knowledgebase and knowledge-management system.</pre></template></div></article></section><section class="lib-part" id="part-v"><header class="part-head"><span class="part-kicker">Part V</span><h1 class="part-title">Original documents</h1></header><div class="part-intro"><h1 id="originals"><button aria-expanded="true" aria-label="Fold chapter" class="fold" data-act="fold" type="button">▾</button>20. Original documents<button aria-label="Copy link to this section" class="hlink" data-act="copy-link" data-id="originals" data-tip="Copy link to this section" type="button">#</button></h1>
-<p>Every project document as it stands in the DeForrest project, folded by default. Open one to read it rendered or as raw Markdown, copy it, or download it as a <code>.md</code> file. Each lists the compendium sections it feeds, and every chapter above lists its source documents.</p>
-<ul>
-<li>Text is verbatim, with three exceptions marked inside the documents: two passages of third-party text (the <a class="xref term" data-tip='NASA/JPL "The Power of 10": ten rules for safety-critical code, kept in the baseline as reference.' href="#power-of-10">Power of 10</a> rules in the <a class="xref term" data-tip="The baseline: Robert’s codified document, stored verbatim in two parts. The sole codified source." href="#rule">baseline</a>, and Cosmopolitan's documentation in <a class="xref term" data-tip="Doors: a reproducible, opinionated native Windows development root (LLVM, GNU; C/C++/Python first-class)." href="#doors">Doors</a>) are not reproduced, and one stretch of the <a class="xref term" data-tip='ExoFyle ("outside of the file"): the implementation method; an editor for knowledgebase editing and programming.' href="#exofyle-core">ExoFyle</a> Macro could not be retrieved.</li>
-<li>Three documents share the path <a class="xref codeterm" data-tip="Macro.md: root file of a subject or project." href="#kb-structure"><code>Macro.md</code></a>. Only one can be opened by path; the root Macro and the <a class="xref term rep" data-tip='ExoFyle ("outside of the file"): the implementation method; an editor for knowledgebase editing and programming.' href="#exofyle-core">ExoFyle</a> Macro were reassembled from project-search fragments.</li>
-<li><code>Knowledge_Base_Architect.txt</code> is listed but not embedded: it is a third-party agent prompt, excluded under the scope rule.</li>
-</ul>
-<div class="orig-tools"><button class="btn" data-act="orig-open-all" type="button">Open all</button><button class="btn" data-act="orig-close-all" type="button">Close all</button></div>
-</div><article class="dcard orig folded" data-doc="types" data-lazy="1" data-status="his" data-title="Types.md" id="doc-types"><header class="d-head"><button aria-expanded="false" aria-label="Unfold document" class="d-fold" data-act="dfold" type="button">▾</button><div class="d-titles"><div class="d-kicker">0.3 KB · Historical</div><div aria-level="3" class="d-title" role="heading">Types.md</div></div><div class="d-tags"><span class="tag his">Historical</span></div><div class="d-bar" role="toolbar"><div class="seg"><button class="segbtn on" data-act="view-rendered" type="button">Read</button><button class="segbtn" data-act="view-raw" type="button">Markdown</button></div><button class="tbtn" data-act="copy-raw" data-tip="Copy this document as Markdown" type="button">Copy</button><button class="tbtn" data-act="dl-doc" data-tip="Download as Markdown; diagrams are included as SVG files in a .zip" type="button">Download</button><button class="tbtn" data-act="replace-doc" data-tip="Replace this document with an uploaded file" type="button">Replace</button><button class="tbtn" data-act="add-after" data-tip="Add a new document after this one" type="button">Add after</button><button class="tbtn" data-act="print-doc" data-tip="Print this document (US Letter or A4), or save it as a PDF" type="button">Print</button><button class="tbtn" data-act="pin-doc" data-tip="Pin this document to the jump list" type="button">Pin</button></div></header><div class="d-body"><p class="d-info">Feeds: <a class="xref" data-tip="Other features" href="#other-features">Other features</a></p><div class="d-view d-rendered"></div><div class="d-view d-raw" hidden=""></div><template class="t-rendered"><ul>
-<li>Left hand values take precedence in type conformity. Ex.</li>
-</ul>
-<div class="scroll"><pre><code>Int x = 10 + 10 ~is 20~
-Flt y = x + 2.0 ~is 22.0~
-</code></pre></div>
-<h6>What is "strong typing"?</h6>
-<ul>
-<li>Representation and visible definition</li>
-<li>Interfacing/coercion between types</li>
-<li>Definitive allocation method</li>
-</ul></template><template class="t-raw"><pre class="rawmd">- Left hand values take precedence in type conformity. Ex.
-```
-Int x = 10 + 10 ~is 20~
-Flt y = x + 2.0 ~is 22.0~
-```
-
-#### What is "strong typing"?
-- Representation and visible definition
-- Interfacing/coercion between types
-- Definitive allocation method
-</pre></template></div></article></section></div></div>
-<div id="print-back"></div>
-</div>
+          <div class="d-body">
+            <div class="d-view d-rendered">
+              <!-- Document content -->
+              Welcome to the thunderdome bitches!
+            </div>
+            <div class="d-view d-raw" hidden=""></div>
+            <template class="t-raw">
+              <pre class="rawmd"></pre>
+            </template>
+          </div>
+        </article>
+      </section>
+    </div>
+    <div id="print-back"></div>
+  </div>
 </main>
+
 <aside aria-label="Jump points" class="pins" id="pins">
-<div class="pins-head"><div class="tabs" role="tablist"><button class="on" data-act="tab" data-tab="pins" role="tab" type="button">Jumps</button><button data-act="tab" data-tab="hl" role="tab" type="button">Highlights <span class="tabn" id="hlcount"></span></button><button data-act="tab" data-tab="terms" role="tab" type="button">Tooltips</button></div><button aria-label="Close sidebar" class="iconbtn" data-act="pins-toggle" type="button">✕</button></div>
-<div id="tab-pins" style="display:grid;gap:12px">
-<p class="small">Temporary links for this visit. Pin a spot, a document or a heading, then jump back with one click. They clear when you close the tab.</p>
-<div class="toolrow">
-<button class="btn primary" data-act="pin-here" type="button">Pin this spot</button>
-<button class="btn" data-act="pins-clear" type="button">Clear all</button>
-</div>
-<ul id="pinlist"></ul>
-</div>
-<div hidden="" id="tab-hl">
-<p class="small">Select any text in a document, then pick a colour. Highlights are kept in this browser and saved into the page with “Write into page” or “Download page”.</p>
-<div class="toolrow">
-<div class="seg" id="hlfilter"><button class="segbtn on" data-hlf="" type="button">All</button><button class="segbtn" data-hlf="y" type="button"><i class="dot y"></i></button><button class="segbtn" data-hlf="g" type="button"><i class="dot g"></i></button><button class="segbtn" data-hlf="b" type="button"><i class="dot b"></i></button><button class="segbtn" data-hlf="p" type="button"><i class="dot p"></i></button></div>
-</div>
-<div class="toolrow">
-<button class="btn" data-act="hl-copy" type="button">Copy as Markdown</button>
-<button class="btn" data-act="hl-download" type="button">Download</button>
-<button class="btn danger" data-act="hl-clear" type="button">Clear all</button>
-</div>
-<ul id="hllist"></ul>
-</div>
-<div hidden="" id="tab-terms">
-<div class="seg" id="termmode"><button class="segbtn on" data-tm="gloss" type="button">Glossary</button><button class="segbtn" data-tm="all" type="button">Every tooltip</button></div>
-<div class="toolrow"><input autocomplete="off" id="termfilter" placeholder="Filter tooltips…" spellcheck="false" type="search"/><button class="btn primary" data-act="term-add" type="button">+ Add</button></div>
-<form autocomplete="off" hidden="" id="termform">
-<div class="tf-title" id="tf-title">New tooltip</div>
-<label>Word or phrase<input id="tf-label" required="" type="text"/></label>
-<label>Tooltip text<textarea id="tf-tip" required="" rows="3"></textarea></label>
-<label id="tf-target-wrap">Links to (optional)<input id="tf-target" list="tf-targets" placeholder="Start typing a section or document" type="text"/></label>
-<datalist id="tf-targets"></datalist>
-<div class="toolrow"><button class="btn primary" type="submit">Save</button><button class="btn" data-act="term-cancel" type="button">Cancel</button><button class="btn danger" data-act="term-delete" hidden="" id="tf-delete" type="button">Delete</button><button class="btn" data-act="term-reset" hidden="" id="tf-reset" type="button">Restore original</button></div>
-</form>
-<p class="small" id="termcount"></p>
-<ul id="termlist"></ul>
-</div>
+  <div class="pins-head">
+    <div class="tabs" role="tablist">
+      <button class="on" data-act="tab" data-tab="pins" role="tab" type="button">
+        Jumps
+      </button>
+      <button data-act="tab" data-tab="hl" role="tab" type="button">
+        Highlights
+        <span class="tabn" id="hlcount"></span>
+      </button>
+      <button data-act="tab" data-tab="terms" role="tab" type="button">
+        Tooltips
+      </button>
+    </div>
+    <button aria-label="Close sidebar" class="iconbtn" data-act="pins-toggle" type="button">✕</button>
+  </div>
+
+  <div id="tab-pins" style="display:grid;gap:12px">
+    <p class="small">
+      Temporary links for this visit. Pin a spot, a document or a heading, then jump back with one click. They clear when you close the tab.
+    </p>
+    <div class="toolrow">
+      <button class="btn primary" data-act="pin-here" type="button">Pin this spot</button>
+      <button class="btn" data-act="pins-clear" type="button">Clear all</button>
+    </div>
+    <ul id="pinlist"></ul>
+  </div>
+
+  <div hidden="" id="tab-hl">
+    <p class="small">
+      Select any text in a document, then pick a colour. Highlights are kept in this browser and saved into the page with “Write into page” or “Download page”.
+    </p>
+    <div class="toolrow">
+      <div class="seg" id="hlfilter">
+        <button class="segbtn on" data-hlf="" type="button">All</button>
+        <button class="segbtn" data-hlf="y" type="button"><i class="dot y"></i></button>
+        <button class="segbtn" data-hlf="g" type="button"><i class="dot g"></i></button>
+        <button class="segbtn" data-hlf="b" type="button"><i class="dot b"></i></button>
+        <button class="segbtn" data-hlf="p" type="button"><i class="dot p"></i></button>
+      </div>
+    </div>
+    <div class="toolrow">
+      <button class="btn" data-act="hl-copy" type="button">Copy as Markdown</button>
+      <button class="btn" data-act="hl-download" type="button">Download</button>
+      <button class="btn danger" data-act="hl-clear" type="button">Clear all</button>
+    </div>
+    <ul id="hllist"></ul>
+  </div>
+
+  <div hidden="" id="tab-terms">
+  <div class="seg" id="termmode">
+    <button class="segbtn on" data-tm="gloss" type="button">Glossary</button>
+    <button class="segbtn" data-tm="all" type="button">Every tooltip</button>
+  </div>
+
+  <div class="toolrow">
+    <input autocomplete="off" id="termfilter" placeholder="Filter tooltips…" spellcheck="false" type="search"/>
+    <button class="btn primary" data-act="term-add" type="button">+ Add</button>
+  </div>
+  <form autocomplete="off" hidden="" id="termform">
+    <div class="tf-title" id="tf-title">New tooltip</div>
+    <label>Word or phrase<input id="tf-label" required="" type="text"/></label>
+    <label>
+      Tooltip text
+      <textarea id="tf-tip" required="" rows="3"></textarea>
+    </label>
+    <label id="tf-target-wrap">
+      Links to (optional)
+      <input id="tf-target" list="tf-targets" placeholder="<Document | Section>" type="text"/>
+    </label>
+    <datalist id="tf-targets"></datalist>
+    <div class="toolrow">
+      <button class="btn primary" type="submit">Save</button>
+      <button class="btn" data-act="term-cancel" type="button">Cancel</button>
+      <!--These seem not to work at all?-->
+      <button class="btn danger" data-act="term-delete" hidden="" id="tf-delete" type="button">Delete</button>
+      <button class="btn" data-act="term-reset" hidden="" id="tf-reset" type="button">Restore original</button>
+      <!---->
+    </div>
+  </form>
+  <p class="small" id="termcount"></p>
+  <ul id="termlist"></ul>
+  </div>
 </aside>
-</div>
+
+</div> <!-- Shell End -->
+
+<!-- Tooltip Behavior Begin -->
 <div id="tip" role="tooltip"></div>
+
 <div aria-label="Highlight selection" id="selbar" role="toolbar">
-<button aria-label="Highlight yellow" class="sw y" data-hlc="y" type="button"></button><button aria-label="Highlight green" class="sw g" data-hlc="g" type="button"></button><button aria-label="Highlight blue" class="sw b" data-hlc="b" type="button"></button><button aria-label="Highlight pink" class="sw p" data-hlc="p" type="button"></button>
-<span class="sep"></span><button class="sbtn" data-sel="note" type="button">Highlight + note</button><button class="sbtn" data-sel="tooltip" type="button">Make tooltip</button><button class="sbtn" data-sel="copy" type="button">Copy</button>
+  <button aria-label="Highlight yellow" class="sw y" data-hlc="y" type="button"></button>
+  <button aria-label="Highlight green" class="sw g" data-hlc="g" type="button"></button>
+  <button aria-label="Highlight blue" class="sw b" data-hlc="b" type="button"></button>
+  <button aria-label="Highlight pink" class="sw p" data-hlc="p" type="button"></button>
+  <span class="sep"></span>
+  <button class="sbtn" data-sel="note" type="button">
+    Highlight + note
+  </button>
+  <button class="sbtn" data-sel="tooltip" type="button">
+    Make tooltip
+  </button>
+  <button class="sbtn" data-sel="copy" type="button">Copy</button>
 </div>
+
 <div aria-label="Content graph" aria-modal="true" class="modal" id="graph" role="dialog">
-<div class="gcard">
-<div class="gbar">
-<b>Content graph</b>
-<div class="seg" id="gmode"><button class="segbtn on" data-gm="docs" type="button">Documents</button><button class="segbtn" data-gm="secs" type="button">Sections</button></div>
-<label class="gopt"><input id="g-orig" type="checkbox"/> Originals</label>
-<input autocomplete="off" id="gq" placeholder="Find a node…" type="search"/>
-<span class="gstat" id="gstat"></span>
-<button class="btn" data-act="g-fit" type="button">Fit</button>
-<button class="btn" data-act="g-close" type="button">Close</button>
+  <div class="gcard">
+  <div class="gbar">
+    <b>Content graph</b>
+    <div class="seg" id="gmode">
+      <button class="segbtn on" data-gm="docs" type="button">Documents</button>
+      <button class="segbtn" data-gm="secs" type="button">Sections</button>
+    </div>
+    <label class="gopt"><input id="g-orig" type="checkbox"/> Originals</label>
+    <input autocomplete="off" id="gq" placeholder="Find a node…" type="search"/>
+    <span class="gstat" id="gstat"></span>
+    <button class="btn" data-act="g-fit" type="button">Fit</button>
+    <button class="btn" data-act="g-close" type="button">Close</button>
+  </div>
+  <svg aria-label="Graph of documents and sections linked by cross-references" id="gsvg" role="img"><g id="gview"><g id="gedges"></g><g id="gnodes"></g></g></svg>
+  <div class="glegend" id="glegend"></div>
+  <div class="ghint">Scroll to zoom · drag the background to pan · drag a node to move it · hover to see its links · click to open</div>
+  </div>
 </div>
-<svg aria-label="Graph of documents and sections linked by cross-references" id="gsvg" role="img"><g id="gview"><g id="gedges"></g><g id="gnodes"></g></g></svg>
-<div class="glegend" id="glegend"></div>
-<div class="ghint">Scroll to zoom · drag the background to pan · drag a node to move it · hover to see its links · click to open</div>
-</div>
-</div>
+
+
+<!-- Section Editor Behavior -->
 <div aria-live="polite" id="toast" role="status"></div>
 <div aria-label="Section editor" id="editbar" role="toolbar">
-<span id="editbar-label">Editing</span>
-<button class="btn primary" data-act="edit-done" type="button">Done</button>
-<button class="btn" data-act="edit-cancel" type="button">Cancel</button>
-<button class="btn" data-act="edit-revert" type="button">Revert to original</button>
+  <span id="editbar-label">Editing</span>
+  <button class="btn primary" data-act="edit-done" type="button">Done</button>
+  <button class="btn" data-act="edit-cancel" type="button">Cancel</button>
+  <button class="btn" data-act="edit-revert" type="button">Revert to original</button>
 </div>
+
 <button aria-label="Back to top" class="btn" data-act="top" id="totop" type="button">↑ Top</button>
+
 <input accept=".md,.markdown,.txt,.zip,.svg,.png,.jpg,.jpeg,.gif,.webp" hidden="" id="fileinput" multiple="" type="file"/>
 <div aria-labelledby="ingest-title" aria-modal="true" class="modal" id="ingest" role="dialog">
-<div class="card">
-<h2 id="ingest-title">Add a document</h2>
-<div class="dropzone" id="dropzone" tabindex="0">Drop a Markdown file here, with its images, or a .zip of both. Or click to choose files.</div>
-<div class="ingest-summary" id="ingest-summary"></div>
-<label class="field">Title <input id="ingest-name" type="text"/></label>
-<label class="field">Place <select id="ingest-place"></select></label>
-<div class="toolrow" style="margin-top:14px">
-<button class="btn primary" data-act="ingest-write" disabled="" id="ingest-write" type="button">Write into page</button>
-<button class="btn" data-act="ingest-draft" disabled="" id="ingest-draft" type="button">Keep as draft</button>
-<button class="btn" data-act="ingest-close" type="button">Cancel</button>
+  <div class="card">
+    <h2 id="ingest-title">Add a document</h2>
+    <div class="dropzone" id="dropzone" tabindex="0">Drop a Markdown file here, with its images, or a .zip of both. Or click to choose files.</div>
+    <div class="ingest-summary" id="ingest-summary"></div>
+    <label class="field">Title <input id="ingest-name" type="text"/></label>
+    <label class="field">Place <select id="ingest-place"></select></label>
+    <div class="toolrow" style="margin-top:14px">
+    <button class="btn primary" data-act="ingest-write" disabled="" id="ingest-write" type="button">Write into page</button>
+    <button class="btn" data-act="ingest-draft" disabled="" id="ingest-draft" type="button">Keep as draft</button>
+    <button class="btn" data-act="ingest-close" type="button">Cancel</button>
+    </div>
+    <p class="small" id="ingest-note" style="font-size:12.5px;color:var(--muted);margin:12px 0 0"></p>
+  </div>
 </div>
-<p class="small" id="ingest-note" style="font-size:12.5px;color:var(--muted);margin:12px 0 0"></p>
-</div>
-</div>
+
 <div aria-label="Go to anything" aria-modal="true" class="modal" id="palette" role="dialog">
-<div class="card">
-<input aria-controls="palres" autocomplete="off" id="palq" placeholder="Go to a document, section or term…" spellcheck="false" type="text"/>
-<ul id="palres" role="listbox"></ul>
-<div class="palfoot"><span><kbd>↑</kbd> <kbd>↓</kbd> choose</span><span><kbd>Enter</kbd> go</span><span><kbd>Shift</kbd>+<kbd>Enter</kbd> go and pin</span><span><kbd>Esc</kbd> close</span></div>
+  <div class="card">
+    <input aria-controls="palres" autocomplete="off" id="palq" placeholder="Go to a document, section or term…" spellcheck="false" type="text"/>
+    <ul id="palres" role="listbox"></ul>
+    <div class="palfoot">
+      <span>
+        <kbd>↑</kbd> <kbd>↓</kbd> choose</span><span><kbd>Enter</kbd> go</span><span><kbd>Shift</kbd>+<kbd>Enter</kbd> go and pin</span><span><kbd>Esc</kbd> close
+      </span>
+    </div>
+  </div>
 </div>
-</div>
+
 <div aria-labelledby="print-title" aria-modal="true" class="modal" id="printdlg" role="dialog">
-<div class="card">
-<h2 id="print-title">Print</h2>
-<div class="pscope ppaper"><span class="pp-label">Paper</span>
-<label><input checked="" name="ppaper" type="radio" value="letter"/> US Letter (8.5 × 11 in)</label>
-<label><input name="ppaper" type="radio" value="a4"/> A4 (210 × 297 mm)</label>
+  <div class="card">
+    <h2 id="print-title">Print</h2>
+    <div class="pscope ppaper"><span class="pp-label">Paper</span>
+      <label><input checked="" name="ppaper" type="radio" value="letter"/> US Letter (8.5 × 11 in)</label>
+      <label><input name="ppaper" type="radio" value="a4"/> A4 (210 × 297 mm)</label>
+    </div>
+    <div class="pscope">
+      <label><input checked="" name="pscope" type="radio" value="doc"/> This document: <b id="pdocname"></b></label>
+      <label><input name="pscope" type="radio" value="all"/> The whole compendium</label>
+      <label><input name="pscope" type="radio" value="pick"/> Choose documents</label>
+    </div>
+    <div class="ppick" hidden="" id="ppick"></div>
+    <div class="popts">
+      <label><input checked="" id="p-cover" type="checkbox"/> Cover page and contents</label>
+      <label><input id="p-orig" type="checkbox"/> Include the 44 original documents</label>
+      <label><input id="p-gloss" type="checkbox"/> Glossary of terms at the end</label>
+      <label><input checked="" id="p-hl" type="checkbox"/> Show my highlights in colour</label>
+      <label><input id="p-hlapp" type="checkbox"/> List my highlights and notes at the end</label>
+    </div>
+    <p class="pnote">
+      External links and the video reference list are left out of prints. For a PDF, choose “Save as PDF” as the destination. The page has its own page numbers, so turn off the browser’s “Headers and footers”. If printing is blocked here, download the print-ready file and print it from your browser.
+    </p>
+    <div class="toolrow">
+      <button class="btn primary" data-act="print-go" type="button">Print</button>
+      <button class="btn" data-act="print-file" type="button">Download print-ready file</button>
+      <button class="btn" data-act="print-close" type="button">Cancel</button>
+    </div>
+  </div>
 </div>
-<div class="pscope">
-<label><input checked="" name="pscope" type="radio" value="doc"/> This document: <b id="pdocname"></b></label>
-<label><input name="pscope" type="radio" value="all"/> The whole compendium</label>
-<label><input name="pscope" type="radio" value="pick"/> Choose documents</label>
-</div>
-<div class="ppick" hidden="" id="ppick"></div>
-<div class="popts">
-<label><input checked="" id="p-cover" type="checkbox"/> Cover page and contents</label>
-<label><input id="p-orig" type="checkbox"/> Include the 44 original documents</label>
-<label><input id="p-gloss" type="checkbox"/> Glossary of terms at the end</label>
-<label><input checked="" id="p-hl" type="checkbox"/> Show my highlights in colour</label>
-<label><input id="p-hlapp" type="checkbox"/> List my highlights and notes at the end</label>
-</div>
-<p class="pnote">External links and the video reference list are left out of prints. For a PDF, choose “Save as PDF” as the destination. The page has its own page numbers, so turn off the browser’s “Headers and footers”. If printing is blocked here, download the print-ready file and print it from your browser.</p>
-<div class="toolrow">
-<button class="btn primary" data-act="print-go" type="button">Print</button>
-<button class="btn" data-act="print-file" type="button">Download print-ready file</button>
-<button class="btn" data-act="print-close" type="button">Cancel</button>
-</div>
-</div>
-</div>
+
 <div aria-labelledby="help-title" aria-modal="true" class="modal" id="help" role="dialog">
-<div class="card">
-<h2 id="help-title">Keyboard shortcuts</h2>
-<table>
-<tr><td><kbd>Ctrl</kbd>+<kbd>K</kbd> or <kbd>G</kbd></td><td>Go to any document, section or term</td></tr>
-<tr><td><kbd>/</kbd></td><td>Search the text</td></tr>
-<tr><td><kbd>Enter</kbd> / <kbd>Shift</kbd>+<kbd>Enter</kbd></td><td>Next / previous match (in search box)</td></tr>
-<tr><td><kbd>N</kbd> / <kbd>Shift</kbd>+<kbd>N</kbd></td><td>Next / previous match</td></tr>
-<tr><td><kbd>P</kbd></td><td>Pin the current spot as a jump point</td></tr>
-<tr><td><kbd>J</kbd></td><td>Show or hide the sidebar (jump points and terms)</td></tr>
-<tr><td><kbd>Ctrl</kbd>+<kbd>P</kbd></td><td>Print the whole compendium on your chosen paper size, US Letter by default (or use Print / PDF for options)</td></tr>
-<tr><td><kbd>V</kbd></td><td>Content graph</td></tr>
-<tr><td><kbd>H</kbd></td><td>Highlight the selected text (yellow)</td></tr>
-<tr><td><kbd>R</kbd></td><td>Focused reading: hide the rails, widen the text</td></tr>
-<tr><td><kbd>B</kbd></td><td>Back to where you were before a jump</td></tr>
-<tr><td><kbd>[</kbd> / <kbd>]</kbd></td><td>Previous / next document</td></tr>
-<tr><td><kbd>F</kbd></td><td>Fold or unfold the current document</td></tr>
-<tr><td><kbd>T</kbd></td><td>Cycle theme: auto, light, dark</td></tr>
-<tr><td><kbd>E</kbd></td><td>Toggle text editing</td></tr>
-<tr><td><kbd>Esc</kbd></td><td>Clear search, close dialogs</td></tr>
-</table>
-<p style="font-size:13px;color:var(--muted)">Uploaded and replaced documents, and text edits, are stored inside the page as an overlay; the original content stays underneath and every change can be restored. On claude.ai, “Write into page” saves a new version and reloads. Offline, use “Download page” to keep the updated single file.</p>
-<div class="toolrow"><button class="btn" data-act="help-close" type="button">Close</button></div>
+  <div class="card">
+    <h2 id="help-title">Keyboard shortcuts</h2>
+    <table>
+      <tr>
+        <td><kbd>Ctrl</kbd>+<kbd>K</kbd> or <kbd>G</kbd></td>
+        <td>Go to any document, section or term</td>
+      </tr>
+      <tr>
+        <td><kbd>/</kbd></td>
+        <td>Search the text</td>
+      </tr>
+      <tr>
+        <td><kbd>Enter</kbd> / <kbd>Shift</kbd>+<kbd>Enter</kbd></td>
+        <td>Next / previous match (in search box)</td>
+      </tr>
+      <tr>
+        <td><kbd>N</kbd> / <kbd>Shift</kbd>+<kbd>N</kbd></td>
+        <td>Next / previous match</td>
+      </tr>
+      <tr>
+        <td><kbd>P</kbd></td>
+        <td>Pin the current spot as a jump point</td>
+      </tr>
+      <tr>
+        <td><kbd>J</kbd></td>
+        <td>Show or hide the sidebar (jump points and terms)</td>
+      </tr>
+      <tr>
+        <td><kbd>Ctrl</kbd>+<kbd>P</kbd></td>
+        <td>Print the whole compendium on your chosen paper size, US Letter by default (or use Print / PDF for options)</td>
+      </tr>
+      <tr>
+        <td><kbd>V</kbd></td>
+        <td>Content graph</td>
+      </tr>
+      <tr>
+        <td><kbd>H</kbd></td>
+        <td>Highlight the selected text (yellow)</td>
+      </tr>
+      <tr>
+        <td><kbd>R</kbd></td>
+        <td>Focused reading: hide the rails, widen the text</td>
+      </tr>
+      <tr>
+        <td><kbd>B</kbd></td>
+        <td>Back to where you were before a jump</td>
+      </tr>
+      <tr>
+        <td><kbd>[</kbd> / <kbd>]</kbd></td>
+        <td>Previous / next document</td>
+      </tr>
+      <tr>
+        <td><kbd>F</kbd></td>
+        <td>Fold or unfold the current document</td>
+      </tr>
+      <tr>
+        <td><kbd>T</kbd></td>
+        <td>Cycle theme: auto, light, dark</td>
+      </tr>
+      <tr>
+        <td><kbd>E</kbd></td>
+        <td>Toggle text editing</td>
+      </tr>
+      <tr>
+        <td><kbd>Esc</kbd></td>
+        <td>Clear search, close dialogs</td>
+      </tr>
+    </table>
+    <p style="font-size:13px;color:var(--muted)">
+      Uploaded and replaced documents, and text edits, are stored inside the page as an overlay; the original content stays underneath and every change can be restored. On claude.ai, “Write into page” saves a new version and reloads. Offline, use “Download page” to keep the updated single file.
+    </p>
+    <div class="toolrow"><button class="btn" data-act="help-close" type="button">Close</button></div>
+  </div>
 </div>
-</div>
+
+<!-- Waduhek is this? -->
 <script id="edit-data" type="application/json">{"version":3,"parts":{},"docs":{},"highlights":[],"terms":{"added":[],"edits":{}}}</script>
+
+<!-- I dunno really how this works -->
 <script id="glossary-data" type="application/json">[
 ["Abstractive", "glossary", "Abstractive: a classified, recomposable datum; the unit in observation; the operand."],
 ["Addressing", "operators", "Addressing: spatialization of datum (search, query, pointer resolution)."],
@@ -687,7 +595,11 @@ Flt y = x + 2.0 ~is 22.0~
 ["[Oo]bservation", "glossary", "Observation: a tangible element of reality."],
 ["[Mm]etadata", "glossary", "Metadata: external data linked to a datum or data."]
 ]</script>
+
+<!-- I dunno -->
 <script id="svg-style" type="text/plain">svg{background:#fbfbf9}.n{fill:#ebede8;stroke:#9aa59f}.na{fill:#dce8e2;stroke:#2c5e4f;stroke-width:1.4}.nl{fill:#fbfbf9;stroke:#9aa59f;stroke-dasharray:3 2}.nh{fill:#ebe6dc;stroke:#6a6256}.ns{fill:#dfe6f0;stroke:#3c5578}.nf{fill:#f4e7cf;stroke:#8a5a12}.e{stroke:#5b6662;stroke-width:1.4}.ah{fill:#5b6662}.tb{fill:#1d2422;font-family:system-ui,sans-serif;font-weight:600}.ts{fill:#5b6662;font-family:system-ui,sans-serif}.tl{fill:#2c5e4f;font-family:system-ui,sans-serif;font-size:11px}.tm,.code{fill:#1d2422;font-family:ui-monospace,Menlo,Consolas,monospace}.tm{font-size:12px}.dotf{fill:#6a6256}.dott{fill:#2c5e4f}.dotu{fill:#fbfbf9;stroke:#5b6662;stroke-width:1.5}</script>
+
 <script src="app.js"></script>
+
 </body>
 </html>
