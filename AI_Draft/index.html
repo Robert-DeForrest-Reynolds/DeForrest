@@ -17,24 +17,25 @@
 
 <body>
 
-<div class="shell"> <!-- Shell Begin -->
+<div class="Shell"> <!-- Shell Begin -->
 
-<div class="tb-stack" id="tb-stack">
-  <section aria-label="Search" class="toolbox" id="tb-search">
-    <header class="tb-head" title="Drag to move">
-      <span class="tb-title">Search</span>
+<div class="Toolbox-Stack" id="Toolbox-Stack">
+  <section aria-label="Search" class="Toolbox" id="tb-search">
+    <header class="Toolbox-Head" title="Drag to move">
+      <span aria-hidden="true" class="tb-grip">⋮⋮</span>
+      <span class="Toolbox-Title">Search</span>
       <!-- Collapse Button -->
-      <button aria-expanded="true" aria-label="Collapse Search" class="iconbtn" data-act="tb-collapse" type="button">▾</button>
+      <button aria-expanded="true" aria-label="Collapse Search" class="IconButton" data-act="Toolbox-Collapse" type="button">▾</button>
       <!-- Close Button -->
-      <button aria-label="Hide Search" class="iconbtn" data-act="tb-hide" type="button">✕</button>
+      <button aria-label="Hide Search" class="IconButton" data-act="Toolbox-Hide" type="button">✕</button>
     </header>
 
-    <div class="tb-body">
-      <div class="rail-block">
-        <div class="searchrow">
+    <div class="Toolbox-Body">
+      <div class="Rail-Block">
+        <div class="SearchRow">
           <input aria-label="Search" autocomplete="off" id="q" placeholder="Search…   /" spellcheck="false" type="search"/>
-          <button aria-label="Previous match" class="iconbtn" id="prevhit" title="Previous match (Shift+Enter)" type="button">↑</button>
-          <button aria-label="Next match" class="iconbtn" id="nexthit" title="Next match (Enter)" type="button">↓</button>
+          <button aria-label="Previous match" class="IconButton" id="prevhit" title="Previous match (Shift+Enter)" type="button">↑</button>
+          <button aria-label="Next match" class="IconButton" id="nexthit" title="Next match (Enter)" type="button">↓</button>
         </div>
 
         <div aria-live="polite" class="count" id="qcount"></div>
@@ -45,9 +46,8 @@
         </div>
       </div>
 
-
-      <div class="rail-block">
-      <span class="rail-label">Show only</span>
+      <div class="Rail-Block">
+      <span class="Rail-Label">Show only</span>
       <div class="chips" id="statuschips">
       <button aria-pressed="false" class="chipbtn cod" data-st="cod" type="button">Codified</button>
       <button aria-pressed="false" class="chipbtn his" data-st="his" type="button">Historical</button>
@@ -56,18 +56,18 @@
     </div>
   </section>
 
-  <section aria-label="Library" class="toolbox" id="tb-tools">
-    <header class="tb-head" title="Drag to move">
-      <span class="tb-title">Library</span>
+  <section aria-label="Library" class="Toolbox" id="tb-tools">
+    <header class="Toolbox-Head" title="Drag to move">
+      <span class="Toolbox-Title">Library</span>
       <!-- Collapse Button -->
-      <button aria-expanded="true" aria-label="Collapse Library" class="iconbtn" data-act="tb-collapse" type="button">▾</button>
+      <button aria-expanded="true" aria-label="Collapse Library" class="IconButton" data-act="Toolbox-Collapse" type="button">▾</button>
       <!-- Close Button -->
-      <button aria-label="Hide Library" class="iconbtn" data-act="tb-hide" type="button">✕</button>
+      <button aria-label="Hide Library" class="IconButton" data-act="Toolbox-Hide" type="button">✕</button>
     </header>
 
-    <div class="tb-body">
-      <div class="rail-block">
-        <div class="toolrow">
+    <div class="Toolbox-Body">
+      <div class="Rail-Block">
+        <div class="Toolrow">
           <button class="btn primary" data-act="add-doc" type="button">Add document</button>
           <button class="btn" data-act="fold-all" type="button">Fold all</button>
           <button class="btn" data-act="unfold-all" type="button">Unfold all</button>
@@ -75,14 +75,14 @@
           <button class="btn" data-act="theme" id="themebtn" type="button">Theme: auto</button>
           <button aria-pressed="false" class="btn" data-act="edit-toggle" id="editbtn" type="button">Edit text</button>
           <button aria-label="Keyboard shortcuts" class="btn" data-act="help" type="button">?</button>
-          <button class="btn" data-act="tb-reset" title="Put every toolbox back in the docked column" type="button">Reset toolboxes</button>
+          <button class="btn" data-act="tb-reset" title="Put every Toolbox back in the docked column" type="button">Reset Toolboxes</button>
         </div>
       </div>
 
       <div class="editpanel" id="editpanel">
         <p id="editstatus">Edit text: choose “Edit section” on any section, change it, then press Done.</p>
         <ul id="editlist"></ul>
-        <div class="toolrow">
+        <div class="Toolrow">
           <button class="btn primary" data-act="save-version" disabled="" id="savebtn" type="button">Write into page</button>
           <button class="btn" data-act="download-html" type="button">Download page</button>
           <button class="btn" data-act="copy-html" type="button">Copy HTML</button>
@@ -93,17 +93,17 @@
   </section>
 
 
-  <section aria-label="Contents" class="toolbox" id="tb-contents">
-    <header class="tb-head" title="Drag to move">
+  <section aria-label="Contents" class="Toolbox" id="tb-contents">
+    <header class="Toolbox-Head" title="Drag to move">
       <span aria-hidden="true" class="tb-grip">⋮⋮</span>
-      <span class="tb-title">Contents</span>
+      <span class="Toolbox-Title">Contents</span>
       <!-- Collapse Button -->
-      <button aria-expanded="true" aria-label="Collapse Contents" class="iconbtn" data-act="tb-collapse" type="button">▾</button>
+      <button aria-expanded="true" aria-label="Collapse Contents" class="IconButton" data-act="Toolbox-Collapse" type="button">▾</button>
       <!-- Close Button -->
-      <button aria-label="Hide Contents" class="iconbtn" data-act="tb-hide" type="button">✕</button>
+      <button aria-label="Hide Contents" class="IconButton" data-act="Toolbox-Hide" type="button">✕</button>
     </header>
 
-    <div class="tb-body">
+    <div class="Toolbox-Body">
       <nav aria-label="Contents" class="toc">
         <div class="toc-part"><a class="toc-ptitle" href="#part-ii"><span>Part II</span>Datumatics</a>
           <ol><li class="toc-doc"><a href="#d-datumatics-theory">Datumatics: the theory</a><ol>
@@ -136,9 +136,9 @@
   <div class="topbar">
     <div aria-label="Toolboxes" class="tb-dock" role="toolbar">
       <span class="brandmark">DeForrest</span>
-      <button class="btn" data-act="tb-toggle" data-tb="tb-search" title="Show or hide the Search toolbox" type="button">Search</button>
-      <button class="btn" data-act="tb-toggle" data-tb="tb-contents" title="Show or hide the Contents toolbox" type="button">Contents</button>
-      <button class="btn" data-act="tb-toggle" data-tb="tb-tools" title="Show or hide the Library toolbox" type="button">Library</button>
+      <button class="btn" data-act="tb-toggle" data-tb="tb-search" title="Show or hide the Search Toolbox" type="button">Search</button>
+      <button class="btn" data-act="tb-toggle" data-tb="tb-contents" title="Show or hide the Contents Toolbox" type="button">Contents</button>
+      <button class="btn" data-act="tb-toggle" data-tb="tb-tools" title="Show or hide the Library Toolbox" type="button">Library</button>
     </div>
 
     <!-- Back Button that shows up after any link interaction -->
@@ -183,7 +183,7 @@
       </div>
 
       <p class="hint">
-        Dotted terms show their definition on hover and link to it. Drag a toolbox by its title to float it anywhere.
+        Dotted terms show their definition on hover and link to it. Drag a Toolbox by its title to float it anywhere.
         <kbd>/</kbd> search ·
         <kbd>P</kbd> pin a jump point ·
         <kbd>B</kbd> back ·
@@ -194,7 +194,7 @@
         <kbd>?</kbd> all shortcuts.
       </p>
 
-      <div class="toolrow" style="margin-top:20px">
+      <div class="Toolrow" style="margin-top:20px">
         <button class="btn primary" data-act="graph" type="button">Open the content graph</button>
         <button class="btn" data-act="palette" type="button">Go to anything</button>
       </div>
@@ -286,14 +286,14 @@
         Tooltips
       </button>
     </div>
-    <button aria-label="Close sidebar" class="iconbtn" data-act="pins-toggle" type="button">✕</button>
+    <button aria-label="Close sidebar" class="IconButton" data-act="pins-toggle" type="button">✕</button>
   </div>
 
   <div id="tab-pins" style="display:grid;gap:12px">
     <p class="small">
       Temporary links for this visit. Pin a spot, a document or a heading, then jump back with one click. They clear when you close the tab.
     </p>
-    <div class="toolrow">
+    <div class="Toolrow">
       <button class="btn primary" data-act="pin-here" type="button">Pin this spot</button>
       <button class="btn" data-act="pins-clear" type="button">Clear all</button>
     </div>
@@ -304,7 +304,7 @@
     <p class="small">
       Select any text in a document, then pick a colour. Highlights are kept in this browser and saved into the page with “Write into page” or “Download page”.
     </p>
-    <div class="toolrow">
+    <div class="Toolrow">
       <div class="seg" id="hlfilter">
         <button class="segbtn on" data-hlf="" type="button">All</button>
         <button class="segbtn" data-hlf="y" type="button"><i class="dot y"></i></button>
@@ -313,7 +313,7 @@
         <button class="segbtn" data-hlf="p" type="button"><i class="dot p"></i></button>
       </div>
     </div>
-    <div class="toolrow">
+    <div class="Toolrow">
       <button class="btn" data-act="hl-copy" type="button">Copy as Markdown</button>
       <button class="btn" data-act="hl-download" type="button">Download</button>
       <button class="btn danger" data-act="hl-clear" type="button">Clear all</button>
@@ -327,7 +327,7 @@
     <button class="segbtn" data-tm="all" type="button">Every tooltip</button>
   </div>
 
-  <div class="toolrow">
+  <div class="Toolrow">
     <input autocomplete="off" id="termfilter" placeholder="Filter tooltips…" spellcheck="false" type="search"/>
     <button class="btn primary" data-act="term-add" type="button">+ Add</button>
   </div>
@@ -343,7 +343,7 @@
       <input id="tf-target" list="tf-targets" placeholder="<Document | Section>" type="text"/>
     </label>
     <datalist id="tf-targets"></datalist>
-    <div class="toolrow">
+    <div class="Toolrow">
       <button class="btn primary" type="submit">Save</button>
       <button class="btn" data-act="term-cancel" type="button">Cancel</button>
       <!--These seem not to work at all?-->
@@ -417,7 +417,7 @@
     <div class="ingest-summary" id="ingest-summary"></div>
     <label class="field">Title <input id="ingest-name" type="text"/></label>
     <label class="field">Place <select id="ingest-place"></select></label>
-    <div class="toolrow" style="margin-top:14px">
+    <div class="Toolrow" style="margin-top:14px">
     <button class="btn primary" data-act="ingest-write" disabled="" id="ingest-write" type="button">Write into page</button>
     <button class="btn" data-act="ingest-draft" disabled="" id="ingest-draft" type="button">Keep as draft</button>
     <button class="btn" data-act="ingest-close" type="button">Cancel</button>
@@ -461,7 +461,7 @@
     <p class="pnote">
       External links and the video reference list are left out of prints. For a PDF, choose “Save as PDF” as the destination. The page has its own page numbers, so turn off the browser’s “Headers and footers”. If printing is blocked here, download the print-ready file and print it from your browser.
     </p>
-    <div class="toolrow">
+    <div class="Toolrow">
       <button class="btn primary" data-act="print-go" type="button">Print</button>
       <button class="btn" data-act="print-file" type="button">Download print-ready file</button>
       <button class="btn" data-act="print-close" type="button">Cancel</button>
@@ -541,7 +541,7 @@
     <p style="font-size:13px;color:var(--muted)">
       Uploaded and replaced documents, and text edits, are stored inside the page as an overlay; the original content stays underneath and every change can be restored. On claude.ai, “Write into page” saves a new version and reloads. Offline, use “Download page” to keep the updated single file.
     </p>
-    <div class="toolrow"><button class="btn" data-act="help-close" type="button">Close</button></div>
+    <div class="Toolrow"><button class="btn" data-act="help-close" type="button">Close</button></div>
   </div>
 </div>
 

@@ -3,6 +3,9 @@
   "languages": {
     "HTML": {
       "tab_size": 2
+    },
+    "Python": {
+        "language_servers": ["!ruff", "..."]
     }
   }
 }

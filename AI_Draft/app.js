@@ -519,7 +519,7 @@
     if (!pins.length) { var e = document.createElement('li'); e.className = 'empty'; e.textContent = 'No jump points yet. Press P or use “Pin this spot”.'; ul.appendChild(e); }
     pins.forEach(function (p, i) {
       var li = document.createElement('li'); li.dataset.i = i; li.tabIndex = 0;
-      li.innerHTML = '<span class="pl"></span><span class="ps"></span><button type="button" class="iconbtn px" data-act="pin-remove" aria-label="Remove jump point">✕</button>';
+      li.innerHTML = '<span class="pl"></span><span class="ps"></span><button type="button" class="IconButton px" data-act="pin-remove" aria-label="Remove jump point">✕</button>';
       $('.pl', li).textContent = p.label; $('.ps', li).textContent = p.sub || '';
       ul.appendChild(li);
     });
@@ -1753,10 +1753,10 @@
   cards().forEach(addPrintBtn);
   var _nc = extHooks.newCard; extHooks.newCard = function (card) { if (_nc) _nc(card); addPrintBtn(card); };
 
-  // ---------- Floating toolboxes ----------
-  var TBS = store.get('toolboxes', {});
-  var stack = $('#tb-stack');
-  function tbSave() { store.set('toolboxes', TBS); }
+  // ---------- Floating Toolboxes ----------
+  var TBS = store.get('Toolboxes', {});
+  var stack = $('#Toolbox-Stack');
+  function tbSave() { store.set('Toolboxes', TBS); }
   function tbState(box) { return TBS[box.id] || (TBS[box.id] = {}); }
   function tbClamp(box) {
     if (!box.classList.contains('free')) return;
@@ -1769,12 +1769,12 @@
     var st = tbState(box);
     box.hidden = !!st.hidden;
     box.classList.toggle('collapsed', !!st.collapsed);
-    var cb = $('[data-act="tb-collapse"]', box); if (cb) cb.setAttribute('aria-expanded', String(!st.collapsed));
+    var cb = $('[data-act="Toolbox-Collapse"]', box); if (cb) cb.setAttribute('aria-expanded', String(!st.collapsed));
     if (st.free) { box.classList.add('free'); box.style.left = st.x + 'px'; box.style.top = st.y + 'px'; tbClamp(box); }
     else { box.classList.remove('free'); box.style.left = box.style.top = ''; }
   }
   function tbRefresh() {
-    var boxes = $$('.toolbox');
+    var boxes = $$('.Toolbox');
     boxes.forEach(tbApply);
     document.body.classList.toggle('tb-docked', boxes.some(function (b) { return !b.hidden && !b.classList.contains('free'); }));
     $$('[data-act="tb-toggle"]').forEach(function (b) { var bx = document.getElementById(b.dataset.tb); var on = bx && !bx.hidden; b.classList.toggle('on', on); b.classList.toggle('off', !on); b.setAttribute('aria-pressed', String(on)); });
@@ -1785,7 +1785,7 @@
   (function tbDrag() {
     var drag = null;
     document.addEventListener('pointerdown', function (e) {
-      var head = e.target.closest && e.target.closest('.tb-head'); if (!head || e.target.closest('button')) return;
+      var head = e.target.closest && e.target.closest('.Toolbox-Head'); if (!head || e.target.closest('button')) return;
       if (window.matchMedia('(max-width: 900px)').matches) return;
       var box = head.parentNode, r = box.getBoundingClientRect();
       drag = { box: box, dx: e.clientX - r.left, dy: e.clientY - r.top, sx: e.clientX, sy: e.clientY, moved: false };
@@ -1805,20 +1805,20 @@
       if (drag.moved) { tbClamp(box); tbSave(); tbRefresh(); }
       drag = null;
     });
-    window.addEventListener('resize', function () { $$('.toolbox.free').forEach(tbClamp); });
+    window.addEventListener('resize', function () { $$('.Toolbox.free').forEach(tbClamp); });
   })();
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('[data-act]'); if (!a) return;
-    var box = a.closest('.toolbox');
+    var box = a.closest('.Toolbox');
     switch (a.dataset.act) {
-      case 'tb-collapse': { var st = tbState(box); st.collapsed = !st.collapsed; tbSave(); tbRefresh(); break; }
-      case 'tb-hide': tbShow(box.id, false); break;
+      case 'Toolbox-Collapse': { var st = tbState(box); st.collapsed = !st.collapsed; tbSave(); tbRefresh(); break; }
+      case 'Toolbox-Hide': tbShow(box.id, false); break;
       case 'tb-toggle': { var bx = document.getElementById(a.dataset.tb); tbShow(a.dataset.tb, bx.hidden || bx.classList.contains('collapsed')); break; }
       case 'tb-reset': TBS = { 'tb-search': {}, 'tb-tools': {}, 'tb-contents': {} }; ['tb-search', 'tb-tools', 'tb-contents'].forEach(function (id) { stack.appendChild(document.getElementById(id)); }); tbSave(); tbRefresh(); toast('Toolboxes docked'); break;
     }
   });
-  // keep the active contents entry in view inside its toolbox
-  var tocBody = $('#tb-contents .tb-body');
+  // keep the active contents entry in view inside its Toolbox
+  var tocBody = $('#tb-contents .Toolbox-Body');
   window.addEventListener('scroll', function () {
     var act = $('.toc a.active:last-of-type') || $('.toc a.active'); if (!act || !tocBody || tocBody.offsetParent === null) return;
     var r = act.getBoundingClientRect(), br = tocBody.getBoundingClientRect();
