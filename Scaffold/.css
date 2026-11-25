@@ -1,0 +1,87 @@
+:root {
+    --canvas: #eceee9;
+    --sheet: #fbfbf8;
+    --panel: #f2f3ef;
+    --ink: #1b2220;
+    --ink-2: #3a4542;
+    --muted: #6a7571;
+    --rule: #dde1dc;
+    --rule-strong: #b3bcb7;
+    --accent: #24584a;
+    --accent-2: #3d7a68;
+    --accent-soft: #e0ebe6;
+    --cod: #24584a;
+    --cod-bg: #dde9e3;
+    --his: #6d6457;
+    --his-bg: #ece7de;
+    --ses: #3a5478;
+    --ses-bg: #e0e7f1;
+    --flag: #8a5a12;
+    --flag-bg: #f5e8d0;
+    --hit: #f7df90;
+    --hit-cur: #f0a83c;
+    --code-bg: #f0f2ee;
+    --shadow:
+        0 1px 2px rgba(20, 30, 26, 0.05), 0 10px 30px rgba(20, 30, 26, 0.06);
+    --font-display: "JetBrains Mono", "JetBrains Mono", ui-monospace, monospace;
+    --font-body: "JetBrains Mono", "JetBrains Mono", ui-monospace, monospace;
+    --font-mono: "JetBrains Mono", "JetBrains Mono", ui-monospace, monospace;
+    --font-fig:
+        system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+        sans-serif;
+    --g1: #2f6f5c;
+    --g2: #3d6aa8;
+    --g3: #a2603a;
+    --g4: #7a5aa6;
+    --g5: #8a8f4a;
+    --g6: #4f7d8f;
+    --g7: #b04a6a;
+    color-scheme: light;
+}
+
+body {
+    font-family: var(--font-body);
+}
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+.ToolboxButton {
+    border: 1px solid var(--rule);
+    background: var(--sheet);
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 12.5px;
+    cursor: pointer;
+    line-height: 1.35;
+    transition:
+        border-color 0.15s,
+        background 0.15s;
+}
+.ToolboxButton:hover {
+    border-color: var(--rule-strong);
+}
+.ToolboxButton.on {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+}
+.ToolboxButton.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--sheet);
+}
+.ToolboxButton.primary:hover {
+    background: var(--accent-2);
+}
+.ToolboxButton.danger {
+    border-color: var(--flag);
+    color: var(--flag);
+}
+.ToolboxButton[disabled] {
+    opacity: 0.45;
+    cursor: default;
+}

@@ -1,0 +1,173 @@
+<!doctype html>
+
+<html lang="en">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+  />
+  <link rel="stylesheet" href=".css" />
+
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>DeForrest Compendium</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <div aria-label="Toolboxes" class="tb-dock" role="toolbar">
+    <span class="Brandmark">DeForrest | Datumatics</span>
+    <button
+      class="ToolboxButton"
+      data-act="Toolbox-Toggle"
+      data-tb="Toolbox-Search"
+      title="Show or hide the Search Toolbox"
+      type="button"
+    >
+      Search
+    </button>
+    <button
+      class="ToolboxButton"
+      data-act="Toolbox-Toggle"
+      data-tb="Toolbox-Contents"
+      title="Show or hide the Contents Toolbox"
+      type="button"
+    >
+      Contents
+    </button>
+    <button
+      class="ToolboxButton"
+      data-act="Toolbox-Toggle"
+      data-tb="Toolbox-Tools"
+      title="Show or hide the Library Toolbox"
+      type="button"
+    >
+      Library
+    </button>
+  </div>
+
+  <div class="Facts">
+    <span><b>17</b> documents</span>
+    <span><b>43</b> originals</span>
+    <span><b>16</b> diagrams</span>
+    <span><b>1,278</b> cross-links</span>
+    <span><b>21,874</b> words</span>
+  </div>
+
+  <p class="Hint">
+    Dotted terms show their definition on hover and link to it. Drag a Toolbox
+    by its title to float it anywhere.
+    <kbd>/</kbd> search · <kbd>P</kbd> pin a jump point · <kbd>B</kbd> back ·
+    <kbd>[</kbd> <kbd>]</kbd> documents ·
+    <kbd>Ctrl</kbd>
+    <kbd>K</kbd> go to anything · <kbd>R</kbd> focus · <kbd>?</kbd> all
+    shortcuts.
+  </p>
+
+  <div class="Document">
+    <section class="Document-Libary-Part" id="Part-II">
+      <header class="Document-Library-Header">
+        <span class="Document-Library-Kicker">Example Kicker</span>
+        <h1 class="Document-Title">Example Document/Chapter Title</h1>
+      </header>
+
+      <article
+        class="Document-Card"
+        data-doc="ExampleDocName"
+        data-title="ExampleDataTitle"
+      >
+        <header class="Document-Head">
+          <button
+            aria-expanded="true"
+            aria-label="Fold document"
+            class="Document-Fold"
+            data-act="DocumentFold"
+            type="button"
+          >
+            ▾
+          </button>
+          <div class="Document-Titles">
+            <div class="Document-Kicker">§0–0.0 · 0,000 words · 0 min read</div>
+              Document Title
+            </div>
+          </div>
+
+          <div class="Document-Toolbar" role="toolbar">
+
+            <div class="Segmenter">
+              <button class="Segment-Button" data-act="view-rendered" type="button">
+                Read
+              </button>
+              <button class="Segment-Button" data-act="view-raw" type="button">
+                Markdown
+              </button>
+            </div>
+
+            <button
+              class="DocumentButton"
+              data-act="copy-raw"
+              data-tip="Copy this document as Markdown"
+              type="button"
+            >
+              Copy
+            </button>
+            <button
+              class="DocumentButton"
+              data-act="dl-doc"
+              data-tip="Download as Markdown; diagrams are included as SVG files in a .zip"
+              type="button"
+            >
+              Download
+            </button>
+            <button
+              class="DocumentButton"
+              data-act="replace-doc"
+              data-tip="Replace this document with an uploaded file"
+              type="button"
+            >
+              Replace
+            </button>
+            <button
+              class="DocumentButton"
+              data-act="add-after"
+              data-tip="Add a new document after this one"
+              type="button"
+            >
+              Add after
+            </button>
+            <button
+              class="DocumentButton"
+              data-act="print-doc"
+              data-tip="Print this document (US Letter or A4), or save it as a PDF"
+              type="button"
+            >
+              Print
+            </button>
+            <button
+              class="DocumentButton"
+              data-act="pin-doc"
+              data-tip="Pin this document to the jump list"
+              type="button"
+            >
+              Pin
+            </button>
+          </div>
+        </header>
+
+        <div class="Document-Body">
+          <div class="Document-View Document-Rendered">
+            <!-- Document content -->
+            Welcome to the thunderdome bitches!
+          </div>
+          <div class="Document-View Document-Raw" hidden=""></div>
+          <template class="Template-Raw">
+            <pre class="RawMD">
+            <!-- Raw Markdown Content -->
+            </pre>
+          </template>
+        </div>
+      </article>
+    </section>
+  </div>
+</html>
