@@ -1,0 +1,5 @@
+CompileFlags:
+  Compiler: ../w64devkit/bin/gcc.exe
+  Add:
+    - --target=x86_64-w64-mingw32
+    - -IC:../Raylib/include
