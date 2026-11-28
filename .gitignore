@@ -1,5 +1,7 @@
 # Developer Tooling
 Raylib
 w64devkit
+**/Personal.md
 
 *.exe
+.vs
